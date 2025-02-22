@@ -1,40 +1,40 @@
 # Active Context
 
 ## Current Focus
-Initial project review and setup phase. We are currently:
-1. Reviewing the technical specification
-2. Setting up project documentation
-3. Preparing for implementation
+Project setup phase completed. We are currently:
+1. Moving into core component development
+2. Planning component implementation order
+3. Preparing to set up data structures
 
 ## Recent Changes
-- Created initial Memory Bank documentation
-- Reviewed technical specification
-- Documented project structure and requirements
+- Initialized React project using Vite
+- Installed base dependencies
+- Set up development environment
+- Created basic project structure
 
 ## Current Task
-Analyzing the technical specification to:
-- Understand requirements
-- Plan implementation strategy
-- Identify potential challenges
-- Determine optimal development approach
+Preparing to implement core components:
+- Planning component hierarchy
+- Setting up data structures
+- Preparing to implement basic UI elements
 
 ## Next Steps
-1. Review specification feedback
-2. Plan initial development phases
-3. Discuss implementation approach
-4. Begin project setup
+1. Install Radix UI dependencies
+2. Create data files (tax-years.json, ni-categories.json)
+3. Set up basic App component structure
+4. Begin implementing BasicDetails section
 
 ## Implementation Notes
+- Using Vite as development server
 - Project will use React with Radix UI
 - Focus on accessibility from the start
 - Need to implement proper error handling
 - Performance optimization is a key consideration
 
 ## Questions to Address
-- Preferred development server (Vite vs Create React App)
-- Any specific styling preferences or requirements
+- Specific Radix UI components needed
 - Priority order for implementing features
 - Any additional export format requirements
 
 ## Current Blockers
-None - awaiting specification review and implementation planning
+None - ready to proceed with core component implementation

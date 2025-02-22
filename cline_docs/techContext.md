@@ -31,7 +31,7 @@
 ### Development Tools
 - Node.js and npm
 - Modern web browser with LocalStorage support
-- Development server (e.g., Vite or Create React App)
+- Vite development server
 
 ## Technical Constraints
 1. **Browser Support**
