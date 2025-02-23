@@ -36,7 +36,6 @@ export const BasicDetails = () => {
 
   return (
     <section>
-      <h2>Basic Details</h2>
       <Form.Root className="basic-details-form">
         {/* Column 1 */}
         <div>
@@ -110,7 +109,7 @@ export const BasicDetails = () => {
         {/* Column 2 */}
         <div>
           <Form.Field className="form-field" name="pension">
-            <Form.Label className="form-label">Pension Contribution (%)</Form.Label>
+            <Form.Label className="form-label">Employer Pension Contribution</Form.Label>
             <Form.Control asChild>
               <div className="form-control">
                 <input
@@ -118,17 +117,17 @@ export const BasicDetails = () => {
                   className="form-input"
                   value={pensionContribution}
                   onChange={(e) => setPensionContribution(e.target.value)}
-                  placeholder="Enter percentage (0-100)"
+                  placeholder="Enter %"
                   min="0"
                   max="100"
-                  step="0.1"
+                  step="1"
                 />
               </div>
             </Form.Control>
           </Form.Field>
 
           <Form.Field className="form-field" name="pensionBasis">
-            <Form.Label className="form-label">Pension Calculation Basis</Form.Label>
+            <Form.Label className="form-label">Pension Basis</Form.Label>
             <Form.Control asChild>
               <Select.Root value={pensionBasis} onValueChange={setPensionBasis}>
                 <Select.Trigger className="select-trigger" aria-label="Pension Basis">

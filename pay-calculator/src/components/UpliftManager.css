@@ -1,8 +1,16 @@
 .section-header {
+  margin-bottom: var(--space-4);
+}
+
+.section-footer {
+  margin-top: var(--space-4);
+}
+
+.uplifts-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--space-6);
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 60px;
 }
 
 .add-button {
@@ -26,12 +34,6 @@
 .add-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
-}
-
-.uplifts-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
 }
 
 .no-uplifts {

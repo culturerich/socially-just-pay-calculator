@@ -5,7 +5,6 @@ export const WorkerManager = () => {
 
   return (
     <section>
-      <h2>Workers</h2>
       <div>
         {/* TODO: Implement worker rows with NI category and uplift selection */}
         <p>Placeholder for worker management interface</p>

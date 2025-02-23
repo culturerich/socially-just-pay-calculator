@@ -11,7 +11,6 @@ export const TotalCalculations = () => {
 
   return (
     <section>
-      <h2>Total Calculations</h2>
       <div>
         {/* TODO: Implement calculation displays */}
         <p>Placeholder for total calculations display</p>
