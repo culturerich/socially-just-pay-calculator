@@ -1,0 +1,32 @@
+{
+  "A": {
+    "name": "Standard",
+    "employerRate": 13.8,
+    "description": "Most employees"
+  },
+  "H": {
+    "name": "Apprentice under 25",
+    "employerRate": 0,
+    "description": "Apprentices under 25"
+  },
+  "B": {
+    "name": "Married Woman's Reduced Rate",
+    "employerRate": 13.8,
+    "description": "Married women and widows entitled to pay reduced rates"
+  },
+  "C": {
+    "name": "Over State Pension age",
+    "employerRate": 13.8,
+    "description": "Employees over the State Pension age"
+  },
+  "J": {
+    "name": "Deferred Rate",
+    "employerRate": 13.8,
+    "description": "Employees who can defer National Insurance"
+  },
+  "M": {
+    "name": "Under 21",
+    "employerRate": 0,
+    "description": "Employees under 21"
+  }
+}

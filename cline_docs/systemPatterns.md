@@ -16,9 +16,22 @@ The system follows a component-based architecture using React with the following
 
 2. **Core Sections**
    - BasicDetails: Core salary and pension inputs
+     * Two-column responsive layout
+     * Grouped related inputs
+     * Optimized currency selector
+     * Form validation
    - UpliftManager: Manages salary uplift calculations
+     * Dynamic row management
+     * Individual uplift controls
+     * Multiplier functionality
    - WorkerManager: Handles worker-specific configurations
    - TotalCalculations: Aggregates all calculations
+
+3. **Layout Patterns**
+   - CSS Grid for major layouts
+   - Flexbox for component internals
+   - Mobile-first responsive design
+   - Consistent spacing using CSS variables
 
 ### Data Flow
 1. User inputs → React state
@@ -31,6 +44,8 @@ The system follows a component-based architecture using React with the following
    - Ensures accessibility
    - Provides unstyled, customizable components
    - Handles complex ARIA attributes
+   - Custom styled form controls
+   - Responsive select components
 
 2. **Calculation Layer**
    - Dedicated PayCalculator service

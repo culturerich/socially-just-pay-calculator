@@ -1,0 +1,123 @@
+.uplift-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-surface);
+}
+
+.uplift-row form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  gap: var(--space-4);
+}
+
+.uplift-row .form-field {
+  margin: 0;
+}
+
+.uplift-row .form-field:first-child {
+  flex: 1;
+}
+
+.uplift-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.multiplier-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Checkbox styling */
+.checkbox-root {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.checkbox-root:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.checkbox-root[data-state="checked"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-indicator {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  user-select: none;
+}
+
+/* Remove button styling */
+.remove-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.remove-button:hover {
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+  color: white;
+}
+
+.remove-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-error);
+}
+
+/* Input field specific styling */
+.uplift-row .form-input {
+  height: 36px; /* Match other input heights */
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .uplift-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .uplift-row form {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .uplift-controls {
+    justify-content: space-between;
+    padding-top: var(--space-2);
+  }
+}

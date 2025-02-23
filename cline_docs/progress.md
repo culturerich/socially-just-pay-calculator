@@ -8,6 +8,9 @@
 - ✅ Architecture planned
 - ✅ Component structure designed
 - ✅ Data structure defined
+- ✅ Basic React components created
+- ✅ Context provider implemented
+- ✅ Data files created
 
 ## What's Left to Build
 
@@ -16,11 +19,20 @@
 - ✅ Install dependencies
 - ✅ Set up development environment
 - ✅ Create basic project structure
+- ✅ Set up component files
+- ✅ Implement context structure
+- 🔲 Install and configure Radix UI
 
 ### Phase 2: Core Components
-- 🔲 Create App root component
-- 🔲 Implement BasicDetails section
-- 🔲 Build UpliftManager component
+- ✅ Create App root component
+- ✅ Implement BasicDetails section with two-column layout
+  - ✅ Tax year and salary inputs in column 1
+  - ✅ Pension details in column 2
+  - ✅ Responsive design for mobile
+- ⏳ Build UpliftManager component
+  - ✅ Basic structure and state management
+  - ✅ Component files created
+  - 🔲 Complete implementation
 - 🔲 Develop WorkerManager component
 - 🔲 Create TotalCalculations component
 

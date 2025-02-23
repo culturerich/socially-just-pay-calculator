@@ -1,40 +1,44 @@
 # Active Context
 
 ## Current Focus
-Project setup phase completed. We are currently:
-1. Moving into core component development
-2. Planning component implementation order
-3. Preparing to set up data structures
+Refining core components and preparing for UpliftManager implementation:
+1. Completed BasicDetails two-column layout
+2. Setting up UpliftManager foundation
+3. Planning worker management features
 
 ## Recent Changes
-- Initialized React project using Vite
-- Installed base dependencies
-- Set up development environment
-- Created basic project structure
+- Restructured BasicDetails into two-column layout
+- Improved form field organization and spacing
+- Enhanced currency selector styling
+- Added responsive breakpoints
+- Created UpliftManager and UpliftRow component files
+- Implemented basic uplift state management
 
 ## Current Task
-Preparing to implement core components:
-- Planning component hierarchy
-- Setting up data structures
-- Preparing to implement basic UI elements
+Pausing development after BasicDetails improvements:
+- Two-column layout implemented
+- Responsive design working
+- Form controls styled and functional
+- Currency selector optimized
 
 ## Next Steps
-1. Install Radix UI dependencies
-2. Create data files (tax-years.json, ni-categories.json)
-3. Set up basic App component structure
-4. Begin implementing BasicDetails section
+1. Complete UpliftManager implementation
+   - Finish uplift row functionality
+   - Add uplift calculations
+   - Implement row management
+2. Begin WorkerManager development
+3. Integrate calculation service
 
 ## Implementation Notes
-- Using Vite as development server
-- Project will use React with Radix UI
-- Focus on accessibility from the start
-- Need to implement proper error handling
-- Performance optimization is a key consideration
+- Using CSS Grid for responsive layouts
+- Leveraging CSS variables for consistent styling
+- Following mobile-first design principles
+- Implementing accessible form controls with Radix UI
 
 ## Questions to Address
-- Specific Radix UI components needed
-- Priority order for implementing features
-- Any additional export format requirements
+- UpliftManager row reordering implementation
+- Worker data structure design
+- Calculation service architecture
 
 ## Current Blockers
-None - ready to proceed with core component implementation
+None - ready to proceed with UpliftManager implementation
