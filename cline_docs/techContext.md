@@ -8,13 +8,24 @@
 2. **UI Components**
    - Radix UI primitives for accessible components
    - Semantic HTML elements
+   - CSS Grid and Flexbox layouts
+   - CSS Variables for theming
 
 3. **Data Management**
    - Browser LocalStorage API
    - JSON data files
+   - React Context for state
 
 4. **Export Libraries**
    - SheetJS for spreadsheet exports
+
+5. **Styling System**
+   - CSS Variables for:
+     * Colors and theming
+     * Spacing and layout
+     * Shadows and effects
+   - Mobile-first responsive design
+   - Component-scoped CSS
 
 ## Development Setup
 ### Required Dependencies
@@ -37,6 +48,7 @@
 1. **Browser Support**
    - Modern browsers with LocalStorage API
    - ES6+ JavaScript support
+   - CSS Grid and Flexbox support
    - Requires client-side JavaScript enabled
 
 2. **Data Limitations**
