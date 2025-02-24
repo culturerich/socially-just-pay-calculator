@@ -71,8 +71,8 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
             onChange={handlePercentageChange}
             placeholder="Enter %"
             min="0"
-            max="100"
-            step="0.1"
+            max="1000"
+            step="0.5"
           />
         </Form.Control>
         </Form.Field>

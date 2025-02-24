@@ -1,0 +1,287 @@
+.worker-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  touch-action: none;
+}
+
+.drag-handle {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  cursor: grab;
+  align-self: center;
+}
+
+.dots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px 4px;
+  width: 10px;
+  height: 18px;
+}
+
+.dot {
+  width: 3.5px;
+  height: 3.5px;
+  background-color: var(--color-text-secondary);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.drag-handle:hover .dot {
+  background-color: var(--color-text);
+  opacity: 0.9;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-handle:active .dot {
+  opacity: 1;
+}
+
+.worker-name-input {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  width: 100%;
+}
+
+.worker-name-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  gap: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  min-width: 200px;
+  color: var(--color-text);
+}
+
+.select-trigger:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.select-content {
+  background-color: var(--color-surface);
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.select-viewport {
+  padding: var(--space-1);
+}
+
+.select-item {
+  padding: var(--space-2);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  color: var(--color-text);
+}
+
+.select-item[data-highlighted] {
+  background-color: var(--color-background);
+}
+
+.select-item[data-state="checked"] {
+  background-color: var(--color-border);
+}
+
+.select-scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.uplifts-container {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.uplift-checkbox {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.checkbox-root {
+  width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.checkbox-root:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
+}
+
+.checkbox-root[data-state="checked"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-indicator {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  transform: scale(0.85);
+}
+
+.checkbox-indicator svg {
+  width: 12px;
+  height: 12px;
+}
+
+
+.delete-button {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: var(--color-error-light);
+}
+
+.dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialog-content {
+  background-color: var(--color-surface);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-lg);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: var(--space-6);
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialog-title {
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.dialog-description {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: flex-end;
+}
+
+.dialog-button {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dialog-button.cancel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.dialog-button.delete {
+  background-color: var(--color-error);
+  border: 1px solid var(--color-error);
+  color: white;
+}
+
+.dialog-button.cancel:hover {
+  background-color: var(--color-background);
+}
+
+.dialog-button.delete:hover {
+  background-color: var(--color-error-dark);
+}
+
+@keyframes overlayShow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes contentShow {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

@@ -1,4 +1,5 @@
 import { usePayCalculator } from '../context/PayCalculatorContext';
+import './TotalCalculations.css';
 
 export const TotalCalculations = () => {
   const {
@@ -10,11 +11,13 @@ export const TotalCalculations = () => {
   } = usePayCalculator();
 
   return (
-    <section>
-      <div>
-        {/* TODO: Implement calculation displays */}
-        <p>Placeholder for total calculations display</p>
-      </div>
-    </section>
+    <>
+      <section>
+        <div>
+          {/* TODO: Implement calculation displays */}
+          <p>Placeholder for total calculations display</p>
+        </div>
+      </section>
+    </>
   );
 };

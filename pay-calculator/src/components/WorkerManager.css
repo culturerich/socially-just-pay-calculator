@@ -1,0 +1,99 @@
+.section-header {
+  margin-bottom: var(--space-4);
+}
+
+.section-header h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+.section-description {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+section {
+  padding: var(--space-6);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  margin-bottom: var(--space-6);
+}
+
+.section-footer {
+  margin-top: var(--space-4);
+}
+
+.worker-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-height: 60px;
+}
+
+.add-button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.add-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.add-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
+}
+
+.no-workers {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  margin: var(--space-4) 0;
+}
+
+/* Animation for new workers */
+.worker-row {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+
+  .add-worker-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

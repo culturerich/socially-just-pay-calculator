@@ -20,7 +20,10 @@ export const PayCalculatorProvider = ({ children }) => {
     { id: '1', title: '', percentage: '', multiplier: false },
     { id: '2', title: '', percentage: '', multiplier: false }
   ]);
-  const [workers, setWorkers] = useState([]);
+  const [workers, setWorkers] = useState([
+    { id: crypto.randomUUID(), name: '', niCategory: '', selectedUplifts: [] },
+    { id: crypto.randomUUID(), name: '', niCategory: '', selectedUplifts: [] }
+  ]);
 
   const value = {
     salary,

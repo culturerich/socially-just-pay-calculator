@@ -62,8 +62,7 @@ export const UpliftManager = () => {
 
   return (
     <section>
-
-      <DndContext
+        <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}

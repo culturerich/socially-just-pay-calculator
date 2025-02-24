@@ -24,14 +24,28 @@ The system follows a component-based architecture using React with the following
      * Dynamic row management
      * Individual uplift controls
      * Multiplier functionality
+     * Full-width uplift rows
+     * Drag and drop reordering
    - WorkerManager: Handles worker-specific configurations
+     * Default workers setup
+     * NI category selection
+     * Uplift checkbox integration
+     * Drag and drop reordering
    - TotalCalculations: Aggregates all calculations
+     * Clear section headings
+     * Organized data display
 
 3. **Layout Patterns**
    - CSS Grid for major layouts
    - Flexbox for component internals
    - Mobile-first responsive design
    - Consistent spacing using CSS variables
+   - Section styling patterns:
+     * Headers and descriptions outside boxes
+     * Consistent padding and borders
+     * Standardized drag handles with dots grid
+     * Uniform button styles with icons
+     * Full-width input rows for better space utilization
 
 ### Data Flow
 1. User inputs → React state
@@ -46,6 +60,7 @@ The system follows a component-based architecture using React with the following
    - Handles complex ARIA attributes
    - Custom styled form controls
    - Responsive select components
+   - Consistent drag and drop functionality
 
 2. **Calculation Layer**
    - Dedicated PayCalculator service

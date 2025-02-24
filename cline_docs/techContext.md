@@ -10,6 +10,12 @@
    - Semantic HTML elements
    - CSS Grid and Flexbox layouts
    - CSS Variables for theming
+   - @dnd-kit/core and @dnd-kit/sortable for drag and drop
+   - Standardized section patterns:
+     * Consistent header placement
+     * Uniform button styling
+     * Drag handle components
+     * Form input layouts
 
 3. **Data Management**
    - Browser LocalStorage API
@@ -24,8 +30,15 @@
      * Colors and theming
      * Spacing and layout
      * Shadows and effects
+     * Border styles and radii
+     * Button and input styles
    - Mobile-first responsive design
    - Component-scoped CSS
+   - Consistent section styling:
+     * Headers outside content boxes
+     * Full-width input rows
+     * Standardized drag handles
+     * Uniform button designs
 
 ## Development Setup
 ### Required Dependencies

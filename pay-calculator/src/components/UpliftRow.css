@@ -49,8 +49,9 @@
 
 .uplift-row form {
   display: grid;
-  grid-template-columns: 1fr 120px;
+  grid-template-columns: 2fr 120px;
   gap: var(--space-4);
+  width: 100%;
 }
 
 .uplift-row .form-field {

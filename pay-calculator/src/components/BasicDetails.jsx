@@ -36,7 +36,7 @@ export const BasicDetails = () => {
 
   return (
     <section>
-      <Form.Root className="basic-details-form">
+        <Form.Root className="basic-details-form">
         {/* Column 1 */}
         <div>
           <Form.Field className="form-field" name="taxYear">
@@ -93,7 +93,7 @@ export const BasicDetails = () => {
                   placeholder="Enter annual salary"
                   required
                   min="0"
-                  step="1"
+                  step="1000"
                 />
               </div>
             </Form.Control>
@@ -152,7 +152,7 @@ export const BasicDetails = () => {
             </Form.Control>
           </Form.Field>
         </div>
-      </Form.Root>
+        </Form.Root>
     </section>
   );
 };
