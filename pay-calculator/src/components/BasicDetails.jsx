@@ -112,16 +112,19 @@ export const BasicDetails = () => {
             <Form.Label className="form-label">Employer Pension Contribution</Form.Label>
             <Form.Control asChild>
               <div className="form-control">
-                <input
-                  type="number"
-                  className="form-input"
-                  value={pensionContribution}
-                  onChange={(e) => setPensionContribution(e.target.value)}
-                  placeholder="Enter %"
-                  min="0"
-                  max="100"
-                  step="1"
-                />
+                <div className="input-with-suffix">
+                  <input
+                    type="number"
+                    className="form-input"
+                    value={pensionContribution}
+                    onChange={(e) => setPensionContribution(e.target.value)}
+                    placeholder="Enter %"
+                    min="0"
+                    max="100"
+                    step="1"
+                  />
+                  <span className="input-suffix">%</span>
+                </div>
               </div>
             </Form.Control>
           </Form.Field>

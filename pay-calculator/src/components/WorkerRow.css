@@ -110,7 +110,8 @@
 }
 
 .select-item[data-highlighted] {
-  background-color: var(--color-background);
+  background-color: var(--color-primary);
+  color: white;
 }
 
 .select-item[data-state="checked"] {
@@ -135,7 +136,11 @@
 .uplift-checkbox {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: calc(var(--space-2) / 2); /* Reduce padding by 50% */
+}
+
+.uplift-checkbox label {
+  font-size: 0.875rem; /* Match the rest of the text */
 }
 
 .checkbox-root {

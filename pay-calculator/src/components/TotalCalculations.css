@@ -22,3 +22,118 @@ section {
   font-size: 0.875rem;
   line-height: 1.5;
 }
+
+/* Empty state */
+.empty-calculations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.empty-calculations p:first-child {
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+/* Calculations container */
+.calculations-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .calculations-container {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+/* Worker calculations */
+.worker-calculations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.worker-calculation {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.worker-calculation h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  margin: 0;
+}
+
+/* Calculation rows */
+.calculation-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.calculation-row:last-child {
+  border-bottom: none;
+}
+
+.calculation-row span:first-child {
+  color: var(--color-text-secondary);
+}
+
+.calculation-row span:last-child {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+/* Special row styles */
+
+.subtotal {
+  background-color: var(--color-background);
+  font-weight: 500;
+}
+
+.total, .grand-total {
+  background-color: var(--color-background);
+  font-weight: 600;
+}
+
+.total span, .grand-total span {
+  color: var(--color-text) !important;
+}
+
+.grand-total {
+  font-size: 1.1rem;
+}
+
+/* Grand totals section */
+.grand-totals {
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  align-self: start;
+}
+
+.grand-totals h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .grand-totals {
+    margin-top: var(--space-4);
+  }
+}

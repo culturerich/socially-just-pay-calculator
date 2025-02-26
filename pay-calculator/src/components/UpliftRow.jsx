@@ -64,16 +64,19 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
 
         <Form.Field className="form-field" name={`uplift-percentage-${uplift.id}`}>
         <Form.Control asChild>
-          <input
-            type="number"
-            className="form-input"
-            value={uplift.percentage}
-            onChange={handlePercentageChange}
-            placeholder="Enter %"
-            min="0"
-            max="1000"
-            step="0.5"
-          />
+          <div className="input-with-suffix">
+            <input
+              type="number"
+              className="form-input"
+              value={uplift.percentage}
+              onChange={handlePercentageChange}
+              placeholder="Enter %"
+              min="0"
+              max="1000"
+              step="0.5"
+            />
+            <span className="input-suffix">%</span>
+          </div>
         </Form.Control>
         </Form.Field>
       </Form.Root>
