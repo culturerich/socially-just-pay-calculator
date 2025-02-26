@@ -9,42 +9,56 @@
   background-color: var(--color-surface);
 }
 
-.drag-handle {
+/* Uplift specific styling */
+.uplift-row .form-input:focus {
+  border-color: var(--color-uplift-accent);
+  box-shadow: 0 0 0 1px var(--color-uplift-accent);
+}
+
+.uplift-row .form-input:hover {
+  border-color: var(--color-uplift-accent);
+}
+
+.uplift-row .checkbox-root[data-state="checked"] {
+  background-color: var(--color-uplift-accent);
+  border-color: var(--color-uplift-accent);
+}
+
+.uplift-row .checkbox-root:hover {
+  border-color: var(--color-uplift-accent);
+}
+
+.uplift-row .checkbox-root:focus {
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-uplift-accent);
+}
+
+.uplift-checkbox {
   display: flex;
   align-items: center;
-  padding: 12px 8px;
-  cursor: grab;
-  align-self: center;
+  gap: calc(var(--space-2) / 2);
+  /* Reduce padding by 50% */
 }
 
-.dots-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 3px 4px;
-  width: 10px;
-  height: 18px;
+.uplift-checkbox label {
+  font-size: 0.875rem;
+  /* Match the rest of the text */
 }
 
-.dot {
-  width: 3.5px;
-  height: 3.5px;
-  background-color: var(--color-text-secondary);
-  border-radius: 50%;
-  opacity: 0.6;
+/* Dialog styling */
+.uplift-row .dialog-delete {
+  background-color: var(--color-error);
+  border: 1px solid var(--color-error);
+  color: white;
 }
 
-.drag-handle:hover .dot {
-  background-color: var(--color-text);
+.uplift-row .dialog-delete:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.drag-handle:active {
-  cursor: grabbing;
-}
-
-.drag-handle:active .dot {
-  opacity: 1;
+.uplift-row .dialog-delete:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-error);
 }
 
 .uplift-row form {
@@ -56,6 +70,14 @@
 
 .uplift-row .form-field {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.uplift-row .form-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
 }
 
 .uplift-row .form-field:first-child {
@@ -65,184 +87,8 @@
 .uplift-controls {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-  height: 36px;
-}
-
-.multiplier-control {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  height: 100%;
-}
-
-/* Checkbox styling - using Radix UI's default style */
-.checkbox-root {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-.checkbox-root:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
-}
-
-.checkbox-root[data-state="checked"] {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-}
-
-.checkbox-indicator {
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 12px;
-  height: 12px;
-  transform: scale(0.85);
-}
-
-.checkbox-indicator svg {
-  width: 12px;
-  height: 12px;
-}
-
-.checkbox-label {
-  font-size: 0.875rem;
-  color: var(--color-text);
-  user-select: none;
-}
-
-/* Dialog styling */
-.dialog-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
-  inset: 0;
-  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dialog-content {
-  background-color: var(--color-surface);
-  border-radius: 0.5rem;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 90vw;
-  max-width: 400px;
-  padding: var(--space-6);
-  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.dialog-title {
-  font-weight: 600;
-  font-size: 1.125rem;
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
-}
-
-.dialog-description {
-  font-size: 0.875rem;
-  line-height: 1.5;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-6);
-}
-
-.dialog-buttons {
-  display: flex;
-  gap: var(--space-3);
   justify-content: flex-end;
-}
-
-.dialog-cancel,
-.dialog-delete {
-  padding: var(--space-2) var(--space-4);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.dialog-cancel {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-}
-
-.dialog-cancel:hover {
-  background-color: var(--color-border);
-  border-color: var(--color-text-secondary);
-}
-
-.dialog-cancel:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-border);
-}
-
-.dialog-delete {
-  background-color: var(--color-error);
-  border: 1px solid var(--color-error);
-  color: white;
-}
-
-.dialog-delete:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.dialog-delete:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-error);
-}
-
-/* Remove button styling */
-.remove-button {
-  background: none;
-  border: none;
-  color: var(--color-error);
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: var(--space-1);
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s;
-}
-
-.remove-button:hover {
-  background-color: var(--color-error-light);
-}
-
-@keyframes overlayShow {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes contentShow {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -48%) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+  height: 36px;
 }
 
 /* Input field specific styling */

@@ -6,6 +6,7 @@
  */
 
 :root {
+
   /* Color Palette - Light Theme */
   --color-primary: #4f46e5;
   --color-primary-light: #6366f1;
@@ -22,6 +23,12 @@
   --color-warning: #f59e0b;
   --color-warning-light: #fcd34d;
   --color-warning-dark: #d97706;
+
+  /* Section Accent Colors */
+  --color-basic-accent: #3b82f6;     /* Blue */
+  --color-uplift-accent: #8b5cf6;    /* Purple */
+  --color-worker-accent: #ec4899;    /* Pink */
+  --color-calculation-accent: #10b981; /* Green */
 
   --color-background: #f9fafb;
   --color-surface: #ffffff;
@@ -51,12 +58,14 @@
   --space-16: 4rem;
 
   /* Shadows */
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
   /* Typography */
   --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-base: 1rem;
@@ -103,6 +112,12 @@
   --color-warning-light: #fcd34d;
   --color-warning-dark: #f59e0b;
 
+  /* Section Accent Colors - Dark Theme */
+  --color-basic-accent: #60a5fa;     /* Lighter Blue */
+  --color-uplift-accent: #a78bfa;    /* Lighter Purple */
+  --color-worker-accent: #f472b6;    /* Lighter Pink */
+  --color-calculation-accent: #34d399; /* Lighter Green */
+
   --color-background: #111827;
   --color-surface: #0f172a;
 
@@ -137,6 +152,12 @@
     --color-warning: #fbbf24;
     --color-warning-light: #fcd34d;
     --color-warning-dark: #f59e0b;
+
+    /* Section Accent Colors - Dark Theme */
+    --color-basic-accent: #60a5fa;     /* Lighter Blue */
+    --color-uplift-accent: #a78bfa;    /* Lighter Purple */
+    --color-worker-accent: #f472b6;    /* Lighter Pink */
+    --color-calculation-accent: #34d399; /* Lighter Green */
 
     --color-background: #111827;
     --color-surface: #0f172a;

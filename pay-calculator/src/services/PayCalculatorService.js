@@ -71,17 +71,14 @@ export const calculateWorkerCosts = ({
       if (!uplift.percentage || isNaN(parseFloat(uplift.percentage))) return;
 
       const percentage = parseFloat(uplift.percentage);
-      const upliftAmount = uplift.multiplier
-        ? workerSalary * (percentage / 100)
-        : baseSalary * (percentage / 100);
+      const upliftAmount = baseSalary * (percentage / 100);
 
       workerSalary += upliftAmount;
 
       appliedUplifts.push({
         title: uplift.title || 'Untitled uplift',
         percentage,
-        amount: upliftAmount,
-        isMultiplier: uplift.multiplier
+        amount: upliftAmount
       });
     });
 

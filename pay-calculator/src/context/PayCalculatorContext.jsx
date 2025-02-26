@@ -17,12 +17,12 @@ export const PayCalculatorProvider = ({ children }) => {
   const [pensionBasis, setPensionBasis] = useState('gross');
   const [taxYear, setTaxYear] = useState('2024-25');
   const [uplifts, setUplifts] = useState([
-    { id: '1', title: '', percentage: '', multiplier: false },
-    { id: '2', title: '', percentage: '', multiplier: false }
+    { id: '1', title: '', percentage: '' },
+    { id: '2', title: '', percentage: '' }
   ]);
   const [workers, setWorkers] = useState([
-    { id: crypto.randomUUID(), name: '', niCategory: '', selectedUplifts: [] },
-    { id: crypto.randomUUID(), name: '', niCategory: '', selectedUplifts: [] }
+    { id: crypto.randomUUID(), name: '', niCategory: 'A', selectedUplifts: [] },
+    { id: crypto.randomUUID(), name: '', niCategory: 'A', selectedUplifts: [] }
   ]);
 
   const value = {

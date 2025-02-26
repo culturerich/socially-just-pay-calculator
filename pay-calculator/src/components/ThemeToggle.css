@@ -1,7 +1,7 @@
 .theme-toggle {
   position: fixed;
   top: 1rem;
-  right: 1rem;
+  right: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
 .theme-toggle:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  background-color: var(--color-primary-light);
+  background-color: var(--color-text);
   color: white;
 }
 

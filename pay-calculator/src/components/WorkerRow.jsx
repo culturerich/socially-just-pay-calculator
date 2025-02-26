@@ -66,15 +66,19 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
           ))}
         </div>
       </div>
-      <input
-        type="text"
-        value={worker.name}
-        onChange={handleNameChange}
-        placeholder="Worker name"
-        className="worker-name-input"
-        aria-label="Worker name"
-        required
-      />
+      <div className="worker-name-container">
+        <label htmlFor={`worker-name-${worker.id}`} className="worker-name-label">Worker</label>
+        <input
+          id={`worker-name-${worker.id}`}
+          type="text"
+          value={worker.name}
+          onChange={handleNameChange}
+          placeholder="Name"
+          className="worker-name-input"
+          aria-label="Worker name"
+          required
+        />
+      </div>
 
       <div className="ni-category-container">
         <div className="ni-category-label">
@@ -146,35 +150,46 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
         ))}
       </div>
 
-      <Dialog.Root open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
-        <Dialog.Trigger asChild>
-          <button className="delete-button" aria-label="Delete worker">
-            ×
-          </button>
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className="dialog-overlay" />
-          <Dialog.Content className="dialog-content">
-            <Dialog.Title className="dialog-title">Delete Worker</Dialog.Title>
-            <Dialog.Description className="dialog-description">
-              Are you sure you want to delete this worker? This action cannot be undone.
-            </Dialog.Description>
-            <div className="dialog-buttons">
-              <Dialog.Close asChild>
-                <button className="dialog-button cancel">Cancel</button>
-              </Dialog.Close>
-              <Dialog.Close asChild>
-                <button
-                  className="dialog-button delete"
-                  onClick={() => onDelete(worker.id)}
-                >
-                  Delete
-                </button>
-              </Dialog.Close>
-            </div>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
+      {/* Only show delete confirmation dialog if worker has a name or selected uplifts */}
+      {worker.name || worker.selectedUplifts.length > 0 ? (
+        <Dialog.Root open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+          <Dialog.Trigger asChild>
+            <button className="delete-button" aria-label="Delete worker">
+              ×
+            </button>
+          </Dialog.Trigger>
+          <Dialog.Portal>
+            <Dialog.Overlay className="dialog-overlay" />
+            <Dialog.Content className="dialog-content">
+              <Dialog.Title className="dialog-title">Delete Worker</Dialog.Title>
+              <Dialog.Description className="dialog-description">
+                Are you sure you want to delete this worker? This action cannot be undone.
+              </Dialog.Description>
+              <div className="dialog-buttons">
+                <Dialog.Close asChild>
+                  <button className="dialog-button cancel">Cancel</button>
+                </Dialog.Close>
+                <Dialog.Close asChild>
+                  <button
+                    className="dialog-button delete"
+                    onClick={() => onDelete(worker.id)}
+                  >
+                    Delete
+                  </button>
+                </Dialog.Close>
+              </div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+      ) : (
+        <button
+          className="delete-button"
+          aria-label="Delete worker"
+          onClick={() => onDelete(worker.id)}
+        >
+          ×
+        </button>
+      )}
     </div>
   );
 };

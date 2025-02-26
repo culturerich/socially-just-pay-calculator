@@ -1,39 +1,10 @@
-.section-header {
-  margin-bottom: var(--space-4);
-}
-
-.section-footer {
-  margin-top: var(--space-4);
-}
 
 .uplifts-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: var(--space-4);
   min-height: 60px;
-}
-
-.add-button {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-2) var(--space-4);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.add-button:hover {
-  background-color: var(--color-primary);
-  color: white;
-}
-
-.add-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-primary);
 }
 
 .no-uplifts {
@@ -49,29 +20,4 @@
 /* Animation for new uplifts */
 .uplift-row {
   animation: slideDown 0.2s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 640px) {
-  .section-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-4);
-  }
-
-  .add-button {
-    width: 100%;
-    justify-content: center;
-  }
 }

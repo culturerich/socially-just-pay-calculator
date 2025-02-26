@@ -12,7 +12,7 @@ export const WorkerManager = () => {
     const newWorker = {
       id: crypto.randomUUID(),
       name: '',
-      niCategory: '',
+      niCategory: 'A',
       selectedUplifts: []
     };
     setWorkers([...workers, newWorker]);
@@ -52,7 +52,7 @@ export const WorkerManager = () => {
   return (
     <>
 
-      <section>
+      <section className="workers-section">
         <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}

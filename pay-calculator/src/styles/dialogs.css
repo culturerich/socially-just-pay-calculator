@@ -1,0 +1,101 @@
+/**
+ * Common Dialog Styles
+ *
+ * This file contains common dialog styles used across multiple components.
+ */
+
+/* Dialog overlay */
+.dialog-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dialog content */
+.dialog-content {
+  background-color: var(--color-surface);
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  max-width: 450px;
+  max-height: 85vh;
+  padding: var(--space-6);
+  animation: contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dialog title */
+.dialog-title {
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+/* Dialog description */
+.dialog-description {
+  margin-bottom: var(--space-6);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Dialog buttons container */
+.dialog-buttons {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: flex-end;
+}
+
+/* Dialog button base */
+.dialog-button {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Cancel button */
+.dialog-button.cancel,
+.dialog-cancel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.dialog-button.cancel:hover,
+.dialog-cancel:hover {
+  background-color: var(--color-background);
+}
+
+.dialog-button.cancel:focus,
+.dialog-cancel:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-border);
+}
+
+/* Delete/Destructive button */
+.dialog-button.delete,
+.dialog-delete {
+  background-color: var(--color-error);
+  border: 1px solid var(--color-error);
+  color: white;
+}
+
+.dialog-button.delete:hover,
+.dialog-delete:hover {
+  background-color: var(--color-error-dark);
+}
+
+.dialog-button.delete:focus,
+.dialog-delete:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-error);
+}

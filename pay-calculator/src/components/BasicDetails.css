@@ -1,11 +1,4 @@
-section {
-  padding: var(--space-6);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
-  margin-bottom: var(--space-6);
-}
-
+/* Form */
 .basic-details-form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -26,75 +19,7 @@ section {
   }
 }
 
-.form-field {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.form-label {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
-}
-
-.form-control {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  height: 36px;
-}
-
-.form-input {
-  flex: 1;
-  height: 36px;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  color: var(--color-text);
-  background-color: var(--color-surface);
-  min-width: 0; /* Prevent flex item from overflowing */
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.form-message, .form-error-message {
-  font-size: 0.75rem;
-  color: var(--color-error);
-  margin-top: var(--space-1);
-}
-
-.input-error {
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 1px var(--color-error);
-}
-
-.input-error:focus {
-  border-color: var(--color-error);
-  box-shadow: 0 0 0 1px var(--color-error);
-}
-
-/* Radix Select Styling */
-.select-trigger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 0.375rem;
-  padding: var(--space-2) var(--space-3);
-  font-size: 0.875rem;
-  gap: var(--space-2);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  cursor: pointer;
-  height: 36px;
-}
-
-/* Currency select specific styling */
+/* Currency select */
 .form-control .select-trigger.currency-select {
   width: 80px;
   min-width: 80px;
@@ -104,96 +29,23 @@ section {
   height: 36px;
 }
 
-/* Input with suffix styling */
-.input-with-suffix {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
+/* Accent color */
+.basic-details-form button:hover,
+.basic-details-form .form-input:focus,
+.basic-details-form .form-input:hover,
+.basic-details-form .select-item:hover,
+.basic-details-form .select-item:focus,
+.basic-details-form .select-trigger:focus,
+.basic-details-form .select-trigger:hover,
+.basic-details-form .select-trigger:focus svg {
+  border-color: var(--color-basic-accent);
 }
 
-.input-with-suffix .form-input {
-  width: 100%;
-  padding-right: 24px; /* Make room for the suffix */
-}
-
-.input-suffix {
-  position: absolute;
-  right: 10px;
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-  pointer-events: none;
-}
-
-/* Full-width select styling */
-.form-field .select-trigger {
-  width: 100%;
-  padding: var(--space-2) var(--space-3);
-}
-
-/* Select trigger icon alignment */
-.select-trigger svg {
-  color: var(--color-text-secondary);
-  margin-left: auto;
-}
-
-.select-trigger:focus svg {
-  color: var(--color-primary);
-}
-
-/* Placeholder styling */
-.form-input::placeholder {
-  color: var(--color-text-secondary);
-  opacity: 0.8;
-}
-
-.select-trigger:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.select-content {
-  overflow: hidden;
-  background-color: var(--color-surface);
-  border-radius: 0.375rem;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-  z-index: 10;
-}
-
-.select-viewport {
-  padding: var(--space-1);
-}
-
-.select-item {
-  font-size: 0.875rem;
-  padding: var(--space-2);
-  border-radius: 0.25rem;
-  cursor: pointer;
-  outline: none;
-  color: var(--color-text);
-  user-select: none;
-}
-
-.select-item[data-highlighted] {
-  background-color: var(--color-primary);
+.basic-details-form .select-item[data-highlighted] {
+  background-color: var(--color-basic-accent);
   color: white;
 }
 
-.select-item[data-state="checked"] {
-  background-color: var(--color-border);
-}
-
-/* Screen reader only class */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+.basic-details-form .select-content {
+  border-color: var(--color-basic-accent);
 }

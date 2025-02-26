@@ -1,0 +1,373 @@
+/* Basic form styling */
+input,
+select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  height: 36px;
+  transition: all 0.2s;
+}
+
+input:hover,
+select:hover {
+  border-color: var(--color-primary);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  color: white;
+  background-color: var(--color-primary);
+}
+
+input:focus::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Basic button styling */
+
+button,
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+button:hover,
+.button:hover,
+button:focus,
+.button:focus {
+  background: var(--color-primary-hover);
+}
+
+button:focus,
+.button:focus {
+  outline: none;
+}
+
+/* Add button styling */
+.add-button {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-basic-accent);
+  color: var(--color-basic-accent);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+
+.add-button:hover {
+  background-color: var(--color-basic-accent);
+  color: white;
+}
+
+.add-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-basic-accent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .add-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Delete button styling */
+.delete-button {
+  background: none;
+  border: none;
+  color: var(--color-error);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: var(--space-1);
+  border-radius: .25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover,
+.delete-button:focus {
+  background-color: var(--color-error-light);
+}
+
+/* Form field container */
+.form-field {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Form labels */
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Form control container */
+.form-control {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 36px;
+}
+
+/* Basic input styling */
+.form-input {
+  flex: 1;
+  height: 36px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  min-width: 0; /* Prevent flex item from overflowing */
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Placeholder styling */
+.form-input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+}
+
+/* Error states */
+.form-message, .form-error-message {
+  font-size: 0.75rem;
+  color: var(--color-error);
+  margin-top: var(--space-1);
+}
+
+.input-error {
+  border-color: var(--color-error);
+}
+
+.input-error:focus {
+  border-color: var(--color-error);
+}
+
+/* Input with suffix styling */
+.input-with-suffix {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-with-suffix .form-input {
+  width: 100%;
+  padding-right: 24px; /* Make room for the suffix */
+}
+
+.input-suffix {
+  position: absolute;
+  right: 10px;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  pointer-events: none;
+}
+
+/* Select styling */
+.select-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.375rem;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.875rem;
+  gap: var(--space-2);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  height: 36px;
+}
+
+.select-trigger:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+/* Select trigger icon alignment */
+.select-trigger svg {
+  color: var(--color-text-secondary);
+  margin-left: auto;
+}
+
+.select-trigger:focus svg {
+  color: var(--color-primary);
+}
+
+/* Full-width select styling */
+.form-field .select-trigger {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+}
+
+/* Currency select specific styling */
+.form-control .select-trigger.currency-select {
+  width: 80px;
+  min-width: 80px;
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+  height: 36px;
+}
+
+/* Select dropdown styling */
+.select-content {
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  z-index: 10;
+}
+
+.select-viewport {
+  padding: var(--space-1);
+}
+
+.select-item {
+  font-size: 0.875rem;
+  padding: var(--space-2);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  color: var(--color-text);
+  user-select: none;
+}
+
+.select-item[data-highlighted] {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.select-item[data-state="checked"] {
+  background-color: var(--color-border);
+}
+
+.select-scroll-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-1);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+/* Checkbox styling */
+.checkbox-root {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--color-border);
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.checkbox-root:focus {
+  outline: none;
+}
+
+.checkbox-root[data-state="checked"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-indicator {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  transform: scale(0.85);
+}
+
+.checkbox-indicator svg {
+  width: 12px;
+  height: 12px;
+}
+
+.checkbox-label {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  user-select: none;
+}
+
+/* Empty state styling */
+.empty-state {
+  text-align: center;
+  padding: var(--space-8);
+  color: var(--color-text-secondary);
+  background-color: var(--color-surface);
+  border: 2px dashed var(--color-border);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Drag handle styling */
+.drag-handle {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  cursor: grab;
+  align-self: center;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.dots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px 4px;
+  width: 10px;
+  height: 18px;
+}
+
+.dot {
+  width: 3.5px;
+  height: 3.5px;
+  background-color: var(--color-text-secondary);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.drag-handle:hover .dot {
+  background-color: var(--color-text);
+  opacity: 0.9;
+}
+
+.drag-handle:active .dot {
+  opacity: 1;
+}

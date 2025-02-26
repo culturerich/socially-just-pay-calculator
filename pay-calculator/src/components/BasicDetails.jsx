@@ -39,14 +39,14 @@ export const BasicDetails = () => {
   }, []);
 
   return (
-    <section aria-labelledby="basic-details-heading">
+    <section className="basic-details-section">
         <h2 id="basic-details-heading" className="sr-only">Basic Details</h2>
         <Form.Root className="basic-details-form">
         {/* Column 1 */}
         <div>
           <Form.Field className="form-field" name="taxYear">
             <Form.Label className="form-label">
-              Tax Year
+              UK Tax Year
               <Tooltip content={tooltipContent.taxYear}>
                 <InfoIcon />
               </Tooltip>
@@ -78,7 +78,7 @@ export const BasicDetails = () => {
 
           <Form.Field className="form-field" name="salary">
             <Form.Label className="form-label">
-              Base Salary
+              Base Annual Salary
               <Tooltip content={tooltipContent.baseSalary}>
                 <InfoIcon />
               </Tooltip>
@@ -105,7 +105,7 @@ export const BasicDetails = () => {
                   className="form-input"
                   value={salary}
                   onChange={(e) => setSalary(e.target.value)}
-                  placeholder="Enter annual salary"
+                  placeholder="e.g. 36000"
                   required
                   min="0"
                   step="1000"
@@ -126,7 +126,7 @@ export const BasicDetails = () => {
         <div>
           <Form.Field className="form-field" name="pension">
             <Form.Label className="form-label">
-              Employer Pension Contribution
+              Employer Pension Contribution %
               <Tooltip content={tooltipContent.pensionContribution}>
                 <InfoIcon />
               </Tooltip>
@@ -152,7 +152,7 @@ export const BasicDetails = () => {
 
                       setPensionContribution(value);
                     }}
-                    placeholder="Enter %"
+                    placeholder="e.g. 4%"
                     min="0"
                     max="100"
                     step="1"

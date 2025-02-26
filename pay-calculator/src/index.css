@@ -1,14 +1,15 @@
 /* Import theme system */
-@import './styles/theme.css';
-@import './styles/print.css';
+@import './styles/animations.css';
+@import './styles/dialogs.css';
+@import './styles/forms.css';
+@import './styles/layout.css';
 @import './styles/mobile.css';
+@import './styles/print.css';
+@import './styles/theme.css';
+@import './styles/utilities.css';
 
-/* Additional variables not covered in theme.css */
-:root {
-  --font-mono: ui-monospace,'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
-  --color-primary-hover: #4338ca; /* Same as --color-primary-dark in theme.css */
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-}
+
+/* RESETS */
 
 * {
   margin: 0;
@@ -21,7 +22,7 @@ body {
   color: var(--color-text);
   background-color: var(--color-background);
   background-image: url(src/assets/noisy.png);
-  background-position: scroll;
+  background-attachment: fixed;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,22 +55,7 @@ input, button, textarea, select {
   font: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 900;
-}
-
 /* Avoid text overflows */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
-}
-
-/* Create a root stacking context */
-#root {
-  isolation: isolate;
-  min-height: 100vh;
 }

@@ -30,8 +30,7 @@ export const UpliftManager = () => {
     const newUplift = {
       id: `uplift-${Date.now()}`,
       title: '',
-      percentage: '',
-      multiplier: false
+      percentage: ''
     };
     setUplifts([...uplifts, newUplift]);
   };
@@ -61,7 +60,7 @@ export const UpliftManager = () => {
   };
 
   return (
-    <section>
+    <section className="uplifts-section">
         <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
