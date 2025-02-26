@@ -10,6 +10,13 @@ Implementing improvements and fixes to the Pay Calculator application:
 
 ## Recent Changes
 
+- Updated styles/README.md to document the current CSS organization:
+  - Documented the purpose and contents of each common CSS file
+  - Explained the two-tier structure of common and component-specific styles
+  - Provided guidelines for when to use common vs. component-specific styles
+  - Added examples of extending common styles with section-specific accent colors
+  - Documented section styling patterns and responsive design approach
+  - Included guidelines for future CSS development
 - Completed TotalCalculations implementation:
   - Added calculation logic for worker salaries with uplifts
   - Implemented employer NI contribution calculations
