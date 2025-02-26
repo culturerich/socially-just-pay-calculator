@@ -250,6 +250,19 @@
   height: 36px; /* Match other input heights */
 }
 
+/* Error state styling */
+.uplift-row .input-error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 1px var(--color-error);
+}
+
+.uplift-row .form-error-message {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: var(--space-1);
+  display: block;
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .uplift-row {

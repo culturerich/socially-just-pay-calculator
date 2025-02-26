@@ -3,9 +3,13 @@ import * as Form from '@radix-ui/react-form';
 import * as Select from '@radix-ui/react-select';
 import { useEffect, useState } from 'react';
 import { ChevronIcon } from './icons/ChevronIcon';
+import { Tooltip } from './Tooltip';
+import { InfoIcon } from './icons/InfoIcon';
+import { tooltipContent } from '../data/tooltip-content';
 import './BasicDetails.css';
 
 export const BasicDetails = () => {
+  const [pensionError, setPensionError] = useState('');
   const {
     salary,
     setSalary,
@@ -35,12 +39,18 @@ export const BasicDetails = () => {
   }, []);
 
   return (
-    <section>
+    <section aria-labelledby="basic-details-heading">
+        <h2 id="basic-details-heading" className="sr-only">Basic Details</h2>
         <Form.Root className="basic-details-form">
         {/* Column 1 */}
         <div>
           <Form.Field className="form-field" name="taxYear">
-            <Form.Label className="form-label">Tax Year</Form.Label>
+            <Form.Label className="form-label">
+              Tax Year
+              <Tooltip content={tooltipContent.taxYear}>
+                <InfoIcon />
+              </Tooltip>
+            </Form.Label>
             <Form.Control asChild>
               <Select.Root value={taxYear} onValueChange={setTaxYear}>
                 <Select.Trigger className="select-trigger" aria-label="Tax Year">
@@ -67,7 +77,12 @@ export const BasicDetails = () => {
           </Form.Field>
 
           <Form.Field className="form-field" name="salary">
-            <Form.Label className="form-label">Base Salary</Form.Label>
+            <Form.Label className="form-label">
+              Base Salary
+              <Tooltip content={tooltipContent.baseSalary}>
+                <InfoIcon />
+              </Tooltip>
+            </Form.Label>
             <Form.Control asChild>
               <div className="form-control">
                 <Select.Root value={currency} onValueChange={setCurrency}>
@@ -94,6 +109,7 @@ export const BasicDetails = () => {
                   required
                   min="0"
                   step="1000"
+                  aria-describedby="salary-error"
                 />
               </div>
             </Form.Control>
@@ -109,28 +125,64 @@ export const BasicDetails = () => {
         {/* Column 2 */}
         <div>
           <Form.Field className="form-field" name="pension">
-            <Form.Label className="form-label">Employer Pension Contribution</Form.Label>
+            <Form.Label className="form-label">
+              Employer Pension Contribution
+              <Tooltip content={tooltipContent.pensionContribution}>
+                <InfoIcon />
+              </Tooltip>
+            </Form.Label>
             <Form.Control asChild>
               <div className="form-control">
                 <div className="input-with-suffix">
                   <input
                     type="number"
-                    className="form-input"
+                    className={`form-input ${pensionError ? 'input-error' : ''}`}
                     value={pensionContribution}
-                    onChange={(e) => setPensionContribution(e.target.value)}
+                    onChange={(e) => {
+                      const value = e.target.value;
+
+                      // Validate pension contribution
+                      if (value && (isNaN(parseFloat(value)) || parseFloat(value) < 0)) {
+                        setPensionError('Please enter a valid positive number');
+                      } else if (value && parseFloat(value) > 100) {
+                        setPensionError('Maximum contribution is 100%');
+                      } else {
+                        setPensionError('');
+                      }
+
+                      setPensionContribution(value);
+                    }}
                     placeholder="Enter %"
                     min="0"
                     max="100"
                     step="1"
+                    aria-invalid={!!pensionError}
+                    aria-describedby={pensionError ? 'pension-error' : undefined}
+                    aria-label="Employer pension contribution percentage"
                   />
                   <span className="input-suffix">%</span>
                 </div>
               </div>
             </Form.Control>
+            {pensionError && (
+              <div className="form-error-message" id="pension-error">
+                {pensionError}
+              </div>
+            )}
           </Form.Field>
 
           <Form.Field className="form-field" name="pensionBasis">
-            <Form.Label className="form-label">Pension Basis</Form.Label>
+            <Form.Label className="form-label">
+              Pension Basis
+              <Tooltip content={
+                `${tooltipContent.pensionBasis.title}:
+                ${pensionBasis === 'gross'
+                  ? tooltipContent.pensionBasis.gross
+                  : tooltipContent.pensionBasis.net}`
+              }>
+                <InfoIcon />
+              </Tooltip>
+            </Form.Label>
             <Form.Control asChild>
               <Select.Root value={pensionBasis} onValueChange={setPensionBasis}>
                 <Select.Trigger className="select-trigger" aria-label="Pension Basis">

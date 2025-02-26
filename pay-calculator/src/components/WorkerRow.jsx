@@ -6,6 +6,9 @@ import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CheckIcon } from './icons/CheckIcon';
 import { ChevronIcon } from './icons/ChevronIcon';
+import { Tooltip } from './Tooltip';
+import { InfoIcon } from './icons/InfoIcon';
+import { tooltipContent } from '../data/tooltip-content';
 import niCategories from '../data/ni-categories.json';
 
 export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
@@ -53,6 +56,8 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
       ref={setNodeRef}
       style={style}
       className="worker-row"
+      role="group"
+      aria-label={`Worker: ${worker.name || 'Unnamed worker'}`}
     >
       <div className="drag-handle" {...attributes} {...listeners}>
         <div className="dots-grid">
@@ -67,15 +72,28 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
         onChange={handleNameChange}
         placeholder="Worker name"
         className="worker-name-input"
+        aria-label="Worker name"
+        required
       />
 
-      <Select.Root value={worker.niCategory} onValueChange={handleNiCategoryChange}>
-        <Select.Trigger className="select-trigger" aria-label="NI Category">
-          <Select.Value placeholder="Select NI category" />
-          <Select.Icon>
-            <ChevronIcon />
-          </Select.Icon>
-        </Select.Trigger>
+      <div className="ni-category-container">
+        <div className="ni-category-label">
+          NI Category
+          <Tooltip content="National Insurance category affects employer contributions">
+            <InfoIcon />
+          </Tooltip>
+        </div>
+        <Select.Root value={worker.niCategory} onValueChange={handleNiCategoryChange}>
+          <Select.Trigger
+            className="select-trigger"
+            aria-label="National Insurance Category"
+            aria-required="true"
+          >
+            <Select.Value placeholder="Select NI category" />
+            <Select.Icon>
+              <ChevronIcon />
+            </Select.Icon>
+          </Select.Trigger>
 
         <Select.Portal>
           <Select.Content className="select-content">
@@ -86,9 +104,11 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
             <Select.Viewport className="select-viewport">
               {Object.entries(niCategories).map(([category, details]) => (
                 <Select.Item key={category} value={category} className="select-item">
-                  <Select.ItemText>
-                    {category} - {details.name}
-                  </Select.ItemText>
+                  <Tooltip content={details.description} position="right">
+                    <Select.ItemText>
+                      {category} - {details.name}
+                    </Select.ItemText>
+                  </Tooltip>
                   <Select.ItemIndicator className="select-item-indicator">
                     <CheckIcon />
                   </Select.ItemIndicator>
@@ -101,7 +121,8 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
             </Select.ScrollDownButton>
           </Select.Content>
         </Select.Portal>
-      </Select.Root>
+        </Select.Root>
+      </div>
 
       <div className="uplifts-container">
         {uplifts.map(uplift => (
@@ -111,12 +132,16 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
               checked={worker.selectedUplifts.includes(uplift.id)}
               onCheckedChange={() => handleUpliftToggle(uplift.id)}
               disabled={!uplift.title || !uplift.percentage}
+              id={`worker-${worker.id}-uplift-${uplift.id}`}
+              aria-label={`Apply ${uplift.title || 'Untitled uplift'} to ${worker.name || 'this worker'}`}
             >
               <Checkbox.Indicator className="checkbox-indicator">
                 <CheckIcon />
               </Checkbox.Indicator>
             </Checkbox.Root>
-            <label>{uplift.title || 'Untitled uplift'}</label>
+            <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}`}>
+              {uplift.title || 'Untitled uplift'}
+            </label>
           </div>
         ))}
       </div>

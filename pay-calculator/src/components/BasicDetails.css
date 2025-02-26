@@ -62,9 +62,20 @@ section {
   box-shadow: 0 0 0 1px var(--color-primary);
 }
 
-.form-message {
+.form-message, .form-error-message {
   font-size: 0.75rem;
   color: var(--color-error);
+  margin-top: var(--space-1);
+}
+
+.input-error {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 1px var(--color-error);
+}
+
+.input-error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 1px var(--color-error);
 }
 
 /* Radix Select Styling */
@@ -171,4 +182,17 @@ section {
 
 .select-item[data-state="checked"] {
   background-color: var(--color-border);
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

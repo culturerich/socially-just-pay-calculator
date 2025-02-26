@@ -10,6 +10,20 @@
   touch-action: none;
 }
 
+.ni-category-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.ni-category-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
 .drag-handle {
   display: flex;
   align-items: center;

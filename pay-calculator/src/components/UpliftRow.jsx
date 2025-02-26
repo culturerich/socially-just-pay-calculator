@@ -1,12 +1,17 @@
 import * as Form from '@radix-ui/react-form';
+import { useState } from 'react';
 import * as Checkbox from '@radix-ui/react-checkbox';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CheckIcon } from './icons/CheckIcon';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { Tooltip } from './Tooltip';
+import { InfoIcon } from './icons/InfoIcon';
+import { tooltipContent } from '../data/tooltip-content';
 import './UpliftRow.css';
 
 export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
+  const [percentageError, setPercentageError] = useState('');
   const {
     attributes,
     listeners,
@@ -30,7 +35,18 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
   };
 
   const handlePercentageChange = (e) => {
-    onUpdate({ ...uplift, percentage: e.target.value });
+    const value = e.target.value;
+
+    // Validate percentage
+    if (value && (isNaN(parseFloat(value)) || parseFloat(value) < 0)) {
+      setPercentageError('Please enter a valid positive number');
+    } else if (value && parseFloat(value) > 1000) {
+      setPercentageError('Maximum percentage is 1000%');
+    } else {
+      setPercentageError('');
+    }
+
+    onUpdate({ ...uplift, percentage: value });
   };
 
   const handleMultiplierChange = (checked) => {
@@ -38,8 +54,19 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
   };
 
   return (
-    <div ref={setNodeRef} style={style} className="uplift-row">
-      <div className="drag-handle" aria-label="Drag to reorder" {...attributes} {...listeners}>
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="uplift-row"
+      role="group"
+      aria-label={`Uplift: ${uplift.title || 'Untitled uplift'}`}
+    >
+      <div
+        className="drag-handle"
+        aria-label="Drag to reorder uplift"
+        {...attributes}
+        {...listeners}
+      >
         <div className="dots-grid">
           <div className="dot"></div>
           <div className="dot"></div>
@@ -58,26 +85,39 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
             value={uplift.title}
             onChange={handleTitleChange}
             placeholder="Enter uplift title"
+            aria-label="Uplift title"
           />
         </Form.Control>
         </Form.Field>
 
         <Form.Field className="form-field" name={`uplift-percentage-${uplift.id}`}>
-        <Form.Control asChild>
-          <div className="input-with-suffix">
-            <input
-              type="number"
-              className="form-input"
-              value={uplift.percentage}
-              onChange={handlePercentageChange}
-              placeholder="Enter %"
-              min="0"
-              max="1000"
-              step="0.5"
-            />
-            <span className="input-suffix">%</span>
-          </div>
-        </Form.Control>
+          <Form.Control asChild>
+            <div className="input-with-suffix">
+              <input
+                type="number"
+                className={`form-input ${percentageError ? 'input-error' : ''}`}
+                value={uplift.percentage}
+                onChange={handlePercentageChange}
+                placeholder="Enter %"
+                min="0"
+                max="1000"
+                step="0.5"
+                aria-invalid={!!percentageError}
+                aria-describedby={percentageError ? `uplift-percentage-error-${uplift.id}` : undefined}
+                aria-label="Uplift percentage"
+                required
+              />
+              <span className="input-suffix">%</span>
+            </div>
+          </Form.Control>
+          {percentageError && (
+            <div
+              className="form-error-message"
+              id={`uplift-percentage-error-${uplift.id}`}
+            >
+              {percentageError}
+            </div>
+          )}
         </Form.Field>
       </Form.Root>
 
@@ -98,6 +138,9 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
             htmlFor={`uplift-multiplier-${uplift.id}`}
           >
             Multiplier
+            <Tooltip content={tooltipContent.multiplier}>
+              <InfoIcon />
+            </Tooltip>
           </label>
         </div>
 
@@ -107,7 +150,7 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
               <button
                 type="button"
                 className="remove-button"
-                aria-label="Remove uplift"
+                aria-label={`Remove uplift: ${uplift.title}`}
               >
                 ×
               </button>
@@ -121,7 +164,7 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
               </Dialog.Description>
               <div className="dialog-buttons">
                 <Dialog.Close asChild>
-                  <button type="button" className="dialog-cancel">
+                  <button type="button" className="dialog-cancel" aria-label="Cancel deletion">
                     Cancel
                   </button>
                 </Dialog.Close>
@@ -130,6 +173,7 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
                     type="button"
                     className="dialog-delete"
                     onClick={handleDelete}
+                    aria-label="Confirm deletion"
                   >
                     Delete
                   </button>
@@ -143,7 +187,7 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
             type="button"
             className="remove-button"
             onClick={handleDelete}
-            aria-label="Remove uplift"
+            aria-label={`Remove uplift: ${uplift.title || 'Untitled uplift'}`}
           >
             ×
           </button>

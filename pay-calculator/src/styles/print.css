@@ -1,0 +1,180 @@
+/**
+ * Print Styles
+ *
+ * This file defines styles specifically for printing the Pay Calculator application.
+ * It ensures that the printed output is clean, readable, and optimized for paper.
+ */
+
+@media print {
+  /* General page setup */
+  @page {
+    margin: 1.5cm;
+    size: portrait;
+  }
+
+  body {
+    font-family: var(--font-family);
+    font-size: 11pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+
+  /* Hide non-essential elements */
+  button,
+  .drag-handle,
+  .remove-button,
+  .delete-button,
+  .dialog-overlay,
+  .dialog-content,
+  .tooltip-container .tooltip,
+  .info-icon {
+    display: none !important;
+  }
+
+  /* Ensure all content is visible */
+  .app {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Improve section layout */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background: white;
+  }
+
+  /* Ensure tables and calculations break properly */
+  .worker-calculation,
+  .grand-totals {
+    page-break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+
+  /* Adjust calculation rows for print */
+  .calculation-row {
+    padding: 0.25rem 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Ensure headers are visible */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: black;
+  }
+
+  h1 {
+    font-size: 18pt;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 14pt;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 12pt;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Adjust form elements for print */
+  input, select {
+    border: none;
+    background: transparent;
+    font-size: 11pt;
+    color: black;
+  }
+
+  /* Ensure inputs show their values */
+  input[type="number"],
+  input[type="text"] {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: black;
+  }
+
+  /* Adjust select elements */
+  .select-trigger {
+    border: none;
+    background: transparent;
+    color: black;
+  }
+
+  /* Ensure calculations are clearly visible */
+  .worker-calculations {
+    display: block;
+    width: 100%;
+  }
+
+  .grand-totals {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  /* Ensure total rows stand out */
+  .total, .grand-total {
+    font-weight: bold;
+    background-color: #f5f5f5;
+  }
+
+  /* Add page breaks where appropriate */
+  .worker-manager {
+    page-break-before: always;
+  }
+
+  /* Ensure URLs and links are visible */
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+  }
+
+  /* Ensure checkboxes are visible */
+  .checkbox-root {
+    border: 1px solid #000;
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+  }
+
+  .checkbox-root[data-state="checked"]::after {
+    content: "✓";
+    display: block;
+    text-align: center;
+    line-height: 12px;
+    font-size: 10px;
+  }
+
+  /* Adjust layout for print */
+  .basic-details-form,
+  .uplift-row form {
+    display: block;
+  }
+
+  .basic-details-form > div {
+    margin-bottom: 1rem;
+  }
+
+  /* Ensure calculations container is full width */
+  .calculations-container {
+    display: block;
+  }
+
+  /* Add a footer with page numbers */
+  @page {
+    @bottom-center {
+      content: "Page " counter(page) " of " counter(pages);
+    }
+  }
+}
