@@ -6,12 +6,13 @@
 
 .tooltip {
   position: absolute;
-  background-color: var(--color-tooltip-bg, #333);
+  background-color: var(--color-tooltip-bg, rgba(51, 51, 51, 0.9));
   color: var(--color-tooltip-text, white);
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   font-size: 0.875rem;
-  max-width: 250px;
+  min-width: 200px;
+  max-width: 300px;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   white-space: normal;
@@ -103,11 +104,11 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: var(--color-info-icon-bg, #6c757d);
+  background-color: var(--color-info-icon-bg, rgba(108, 117, 125, 0.5));
   color: var(--color-info-icon-text, white);
   font-size: 12px;
   font-weight: bold;
-  margin-left: 4px;
+  margin-left: 6px;
   cursor: help;
 }
 

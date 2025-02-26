@@ -3,12 +3,14 @@ import { BasicDetails } from './components/BasicDetails';
 import { UpliftManager } from './components/UpliftManager';
 import { WorkerManager } from './components/WorkerManager';
 import { TotalCalculations } from './components/TotalCalculations';
+import { ThemeToggle } from './components/ThemeToggle';
 import './App.css';
 
 function App() {
   return (
     <PayCalculatorProvider>
       <div className="app">
+        <ThemeToggle />
         <h1>Socially Just Pay Calculator</h1>
         <p className="app-intro">
           A tool to help you calculate the costs of a socially-just pay policy with different uplifts &amp; workers.
