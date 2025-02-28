@@ -30,7 +30,8 @@ export const UpliftManager = () => {
     const newUplift = {
       id: `uplift-${Date.now()}`,
       title: '',
-      percentage: ''
+      percentage: '',
+      indentLevel: 0
     };
     setUplifts([...uplifts, newUplift]);
   };
@@ -48,9 +49,24 @@ export const UpliftManager = () => {
   };
 
   const handleDragEnd = (event) => {
-    const { active, over } = event;
+    const { active, over, delta } = event;
 
-    if (active.id !== over.id) {
+    // Only apply horizontal indentation on desktop
+    if (!window.matchMedia('(max-width: 768px)').matches && Math.abs(delta.x) > 30) {
+      // Indentation logic for desktop only
+      setUplifts((items) => {
+        return items.map(item => {
+          if (item.id === active.id) {
+            // Toggle between 0 and 1 based on drag direction
+            const newIndentLevel = delta.x > 0 ? 1 : 0;
+            return { ...item, indentLevel: newIndentLevel };
+          }
+          return item;
+        });
+      });
+    }
+    // Vertical reordering works on all devices
+    else if (active.id !== over.id) {
       setUplifts((items) => {
         const oldIndex = items.findIndex((i) => i.id === active.id);
         const newIndex = items.findIndex((i) => i.id === over.id);

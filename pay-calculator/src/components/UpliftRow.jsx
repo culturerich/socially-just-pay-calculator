@@ -46,6 +46,21 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
     onUpdate({ ...uplift, percentage: value });
   };
 
+  const handleKeyDown = (e) => {
+    // Only apply when the row has focus and specific keys are pressed
+    if (document.activeElement === e.currentTarget) {
+      if (e.key === 'ArrowRight' && e.altKey) {
+        // Alt + Right Arrow to indent
+        e.preventDefault();
+        onUpdate({ ...uplift, indentLevel: 1 });
+      } else if (e.key === 'ArrowLeft' && e.altKey) {
+        // Alt + Left Arrow to outdent
+        e.preventDefault();
+        onUpdate({ ...uplift, indentLevel: 0 });
+      }
+    }
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -53,6 +68,11 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
       className="uplift-row"
       role="group"
       aria-label={`Uplift: ${uplift.title || 'Untitled uplift'}`}
+      tabIndex="0"
+      onKeyDown={handleKeyDown}
+      data-indent-level={uplift.indentLevel || 0}
+      aria-level={uplift.indentLevel + 1}
+      aria-description="Use Alt+Right Arrow to indent, Alt+Left Arrow to outdent"
     >
       <div
         className="drag-handle"
