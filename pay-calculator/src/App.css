@@ -42,22 +42,22 @@
 
 /* Section-specific header styling with underlines */
 .section-intro.basic-details h2 {
-  border-bottom: 4px solid var(--color-basic-accent);
+  border-bottom: 4px solid var(--color-basics-section);
   display: inline-block;
 }
 
 .section-intro.uplifts h2 {
-  border-bottom: 4px solid var(--color-uplift-accent);
+  border-bottom: 4px solid var(--color-uplift-section);
   display: inline-block;
 }
 
 .section-intro.workers h2 {
-  border-bottom: 4px solid var(--color-worker-accent);
+  border-bottom: 4px solid var(--color-worker-section);
   display: inline-block;
 }
 
 .section-intro.calculations h2 {
-  border-bottom: 4px solid var(--color-calculation-accent);
+  border-bottom: 4px solid var(--color-calculation-section);
   display: inline-block;
 }
 

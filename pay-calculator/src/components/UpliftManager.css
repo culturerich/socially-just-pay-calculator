@@ -1,4 +1,3 @@
-
 .uplifts-container {
   display: flex;
   flex-direction: column;
@@ -11,10 +10,8 @@
   text-align: center;
   padding: var(--space-8);
   color: var(--color-text-secondary);
-  background-color: var(--color-surface);
   border: 2px dashed var(--color-border);
   border-radius: 0.5rem;
-  font-size: 0.875rem;
 }
 
 /* Animation for new uplifts */

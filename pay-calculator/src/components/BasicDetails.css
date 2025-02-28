@@ -24,28 +24,5 @@
   width: 80px;
   min-width: 80px;
   flex-shrink: 0;
-  padding: var(--space-2) var(--space-4);
   font-size: 0.875rem;
-  height: 36px;
-}
-
-/* Accent color */
-.basic-details-form button:hover,
-.basic-details-form .form-input:focus,
-.basic-details-form .form-input:hover,
-.basic-details-form .select-item:hover,
-.basic-details-form .select-item:focus,
-.basic-details-form .select-trigger:focus,
-.basic-details-form .select-trigger:hover,
-.basic-details-form .select-trigger:focus svg {
-  border-color: var(--color-basic-accent);
-}
-
-.basic-details-form .select-item[data-highlighted] {
-  background-color: var(--color-basic-accent);
-  color: white;
-}
-
-.basic-details-form .select-content {
-  border-color: var(--color-basic-accent);
 }

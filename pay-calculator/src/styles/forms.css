@@ -1,7 +1,10 @@
 /* Basic form styling */
+
 input,
-select {
+select,
+button {
   padding: var(--space-2) var(--space-3);
+  background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 0.375rem;
   font-size: 0.875rem;
@@ -10,50 +13,33 @@ select {
   transition: all 0.2s;
 }
 
-input:hover,
-select:hover {
-  border-color: var(--color-primary);
+:is(input, select, button):is(:hover, :focus) {
+  outline: none;
+  border: 1px solid transparent;
+  outline: 2px solid var(--color-section, var(--color-primary));
 }
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  color: white;
-  background-color: var(--color-primary);
+input {
+  flex: 1;
+  min-width: 0; /* Prevent flex item from overflowing */
 }
 
 input:focus::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Basic button styling */
-
 button,
 .button {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-2) var(--space-4);
-  background: var(--color-primary);
+  background: var(--color-section, var(--color-primary));
   color: white;
-  border: none;
-  border-radius: 0.375rem;
   cursor: pointer;
-  font-size: 0.875rem;
   font-weight: 500;
-  transition: background-color 0.2s;
 }
 
-button:hover,
-.button:hover,
-button:focus,
-.button:focus {
-  background: var(--color-primary-hover);
-}
-
-button:focus,
-.button:focus {
-  outline: none;
+:is(button, .button):not(.select-trigger):is(:hover, :focus) {
+  background: var(--color-section, var(--color-primary-hover));
 }
 
 /* Add button styling */
@@ -61,26 +47,22 @@ button:focus,
   display: inline-flex;
   align-items: center;
   padding: var(--space-2) var(--space-4);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-basic-accent);
-  color: var(--color-basic-accent);
+  background-color: transparent;
+  border: 1px solid var(--color-section, var(--color-primary));
+  color: var(--color-section, var(--color-primary));
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   transition: all 0.2s;
 }
 
 .add-button:hover {
-  background-color: var(--color-basic-accent);
+  background-color: var(--color-section, var(--color-primary));
+  outline-color: var(--color-section, var(--color-primary));
   color: white;
 }
 
-.add-button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-basic-accent);
-}
 
-/* Responsive adjustments */
 @media (max-width: 640px) {
   .add-button {
     width: 100%;
@@ -118,8 +100,7 @@ button:focus,
 /* Form labels */
 .form-label {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--color-text);
+  color: var(--color-text-secondary);
 }
 
 /* Form control container */
@@ -130,30 +111,6 @@ button:focus,
   height: 36px;
 }
 
-/* Basic input styling */
-.form-input {
-  flex: 1;
-  height: 36px;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  color: var(--color-text);
-  background-color: var(--color-surface);
-  min-width: 0; /* Prevent flex item from overflowing */
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-/* Placeholder styling */
-.form-input::placeholder {
-  color: var(--color-text-secondary);
-  opacity: 0.8;
-}
-
 /* Error states */
 .form-message, .form-error-message {
   font-size: 0.75rem;
@@ -162,11 +119,11 @@ button:focus,
 }
 
 .input-error {
-  border-color: var(--color-error);
+  outline-color: var(--color-error);
 }
 
 .input-error:focus {
-  border-color: var(--color-error);
+  outline-color: var(--color-error);
 }
 
 /* Input with suffix styling */
@@ -192,62 +149,40 @@ button:focus,
 
 /* Select styling */
 .select-trigger {
-  display: inline-flex;
-  align-items: center;
   justify-content: space-between;
-  border-radius: 0.375rem;
-  padding: var(--space-2) var(--space-3);
-  font-size: 0.875rem;
   gap: var(--space-2);
-  background-color: var(--color-surface);
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--color-border);
   color: var(--color-text);
-  cursor: pointer;
-  height: 36px;
 }
 
-.select-trigger:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-/* Select trigger icon alignment */
 .select-trigger svg {
   color: var(--color-text-secondary);
   margin-left: auto;
 }
 
 .select-trigger:focus svg {
-  color: var(--color-primary);
+  color: var(--color-section, var(--color-primary));
 }
 
-/* Full-width select styling */
 .form-field .select-trigger {
   width: 100%;
   padding: var(--space-2) var(--space-3);
 }
 
-/* Currency select specific styling */
-.form-control .select-trigger.currency-select {
-  width: 80px;
-  min-width: 80px;
-  flex-shrink: 0;
-  padding: var(--space-2) var(--space-4);
-  font-size: 0.875rem;
-  height: 36px;
-}
-
 /* Select dropdown styling */
 .select-content {
-  overflow: hidden;
-  background-color: var(--color-surface);
-  border-radius: 0.375rem;
-  border: 1px solid var(--color-border);
+  overflow: visible;
   z-index: 10;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.2s ease;
 }
 
 .select-viewport {
-  padding: var(--space-1);
+  padding: var(--space-2);
 }
 
 .select-item {
@@ -258,16 +193,15 @@ button:focus,
   outline: none;
   color: var(--color-text);
   user-select: none;
+  transition: background-color 0.15s ease;
 }
 
 .select-item[data-highlighted] {
-  background-color: var(--color-primary);
+  background-color: var(--color-section, var(--color-primary));
   color: white;
 }
 
-.select-item[data-state="checked"] {
-  background-color: var(--color-border);
-}
+
 
 .select-scroll-button {
   display: flex;
@@ -284,7 +218,6 @@ button:focus,
   height: 16px;
   border-radius: 4px;
   border: 1px solid var(--color-border);
-  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -292,13 +225,15 @@ button:focus,
   padding: 0;
 }
 
-.checkbox-root:focus {
-  outline: none;
+.checkbox-root:is(:hover, :focus) {
+  border: 1px solid transparent;
+  outline: 2px solid var(--color-section, var(--color-primary));
 }
 
 .checkbox-root[data-state="checked"] {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--color-section, var(--color-primary));
+  border: 1px solid transparent;
+  outline: 2px solid var(--color-section, var(--color-primary));
 }
 
 .checkbox-indicator {
@@ -327,7 +262,6 @@ button:focus,
   text-align: center;
   padding: var(--space-8);
   color: var(--color-text-secondary);
-  background-color: var(--color-surface);
   border: 2px dashed var(--color-border);
   border-radius: 0.5rem;
   font-size: 0.875rem;

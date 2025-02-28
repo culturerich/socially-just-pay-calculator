@@ -44,7 +44,7 @@ export const TotalCalculations = () => {
 
   return (
     <>
-      <section className="calculations-section">
+      <section className="calculations-section" data-section="calculations">
         <h2 id="calculations-heading" className="sr-only">Calculation Results</h2>
         <div className="calculations-container">
           {/* Worker calculations */}

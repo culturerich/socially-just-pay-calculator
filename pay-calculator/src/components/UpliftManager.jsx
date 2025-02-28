@@ -60,7 +60,7 @@ export const UpliftManager = () => {
   };
 
   return (
-    <section className="uplifts-section">
+    <section className="uplifts-section" data-section="uplifts">
         <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}

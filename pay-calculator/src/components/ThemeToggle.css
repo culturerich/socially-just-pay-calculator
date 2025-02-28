@@ -1,28 +1,25 @@
 .theme-toggle {
   position: fixed;
-  top: 1rem;
-  right: 2rem;
+  top: 1.5rem;
+  right: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--color-surface);
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
+  background-color: var(--color-text);
+  color: var(--color-surface);
   cursor: pointer;
   z-index: 100;
   transition: all 0.2s ease;
   padding: var(--space-2);
 }
 
-.theme-toggle:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--color-text);
-  color: white;
+.theme-toggle:is(:hover, :focus) {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  outline: none;
 }
 
 .theme-toggle:active {
@@ -30,8 +27,8 @@
 }
 
 .theme-toggle svg {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
 }
 
 /* Responsive adjustments */

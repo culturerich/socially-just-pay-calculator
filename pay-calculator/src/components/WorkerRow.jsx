@@ -67,13 +67,13 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
         </div>
       </div>
       <div className="worker-name-container">
-        <label htmlFor={`worker-name-${worker.id}`} className="worker-name-label">Worker</label>
+        <label htmlFor={`worker-name-${worker.id}`} className="form-label">Worker</label>
         <input
           id={`worker-name-${worker.id}`}
           type="text"
           value={worker.name}
           onChange={handleNameChange}
-          placeholder="Name"
+          placeholder="Enter name"
           className="worker-name-input"
           aria-label="Worker name"
           required
@@ -81,7 +81,7 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
       </div>
 
       <div className="ni-category-container">
-        <div className="ni-category-label">
+        <div className="form-label">
           NI Category
           <Tooltip content="National Insurance category affects employer contributions">
             <InfoIcon />
@@ -100,7 +100,7 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
           </Select.Trigger>
 
         <Select.Portal>
-          <Select.Content className="select-content">
+          <Select.Content className="select-content" data-section="workers">
             <Select.ScrollUpButton className="select-scroll-button">
               <ChevronIcon style={{ transform: 'rotate(180deg)' }} />
             </Select.ScrollUpButton>
@@ -143,7 +143,7 @@ export const WorkerRow = ({ worker, uplifts, onUpdate, onDelete }) => {
                 <CheckIcon />
               </Checkbox.Indicator>
             </Checkbox.Root>
-            <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}`}>
+            <label className="checkbox-label" htmlFor={`worker-${worker.id}-uplift-${uplift.id}`}>
               {uplift.title || 'Untitled uplift'}
             </label>
           </div>

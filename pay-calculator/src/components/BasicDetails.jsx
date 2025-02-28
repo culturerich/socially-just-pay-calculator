@@ -39,43 +39,11 @@ export const BasicDetails = () => {
   }, []);
 
   return (
-    <section className="basic-details-section">
+    <section className="basic-details-section" data-section="basics">
         <h2 id="basic-details-heading" className="sr-only">Basic Details</h2>
         <Form.Root className="basic-details-form">
         {/* Column 1 */}
         <div>
-          <Form.Field className="form-field" name="taxYear">
-            <Form.Label className="form-label">
-              UK Tax Year
-              <Tooltip content={tooltipContent.taxYear}>
-                <InfoIcon />
-              </Tooltip>
-            </Form.Label>
-            <Form.Control asChild>
-              <Select.Root value={taxYear} onValueChange={setTaxYear}>
-                <Select.Trigger className="select-trigger" aria-label="Tax Year">
-                  <Select.Value>{taxYear}</Select.Value>
-                  <ChevronIcon />
-                </Select.Trigger>
-                <Select.Portal>
-                  <Select.Content className="select-content">
-                    <Select.Viewport className="select-viewport">
-                      {taxYears.map((year) => (
-                        <Select.Item
-                          key={year}
-                          className="select-item"
-                          value={year}
-                        >
-                          <Select.ItemText>{year}</Select.ItemText>
-                        </Select.Item>
-                      ))}
-                    </Select.Viewport>
-                  </Select.Content>
-                </Select.Portal>
-              </Select.Root>
-            </Form.Control>
-          </Form.Field>
-
           <Form.Field className="form-field" name="salary">
             <Form.Label className="form-label">
               Base Annual Salary
@@ -91,7 +59,7 @@ export const BasicDetails = () => {
                     <ChevronIcon />
                   </Select.Trigger>
                   <Select.Portal>
-                    <Select.Content className="select-content" position="popper">
+                    <Select.Content className="select-content" position="popper" data-section="basics">
                       <Select.Viewport className="select-viewport">
                         <Select.Item className="select-item" value="GBP">
                           <Select.ItemText>GBP</Select.ItemText>
@@ -119,6 +87,38 @@ export const BasicDetails = () => {
             <Form.Message className="form-message" match="typeMismatch">
               Please enter a valid number
             </Form.Message>
+          </Form.Field>
+
+          <Form.Field className="form-field" name="taxYear">
+            <Form.Label className="form-label">
+              UK Tax Year
+              <Tooltip content={tooltipContent.taxYear}>
+                <InfoIcon />
+              </Tooltip>
+            </Form.Label>
+            <Form.Control asChild>
+              <Select.Root value={taxYear} onValueChange={setTaxYear}>
+                <Select.Trigger className="select-trigger" aria-label="Tax Year">
+                  <Select.Value>{taxYear}</Select.Value>
+                  <ChevronIcon />
+                </Select.Trigger>
+                <Select.Portal>
+                  <Select.Content className="select-content" data-section="basics">
+                    <Select.Viewport className="select-viewport">
+                      {taxYears.map((year) => (
+                        <Select.Item
+                          key={year}
+                          className="select-item"
+                          value={year}
+                        >
+                          <Select.ItemText>{year}</Select.ItemText>
+                        </Select.Item>
+                      ))}
+                    </Select.Viewport>
+                  </Select.Content>
+                </Select.Portal>
+              </Select.Root>
+            </Form.Control>
           </Form.Field>
         </div>
 
@@ -192,7 +192,7 @@ export const BasicDetails = () => {
                   <ChevronIcon />
                 </Select.Trigger>
                 <Select.Portal>
-                  <Select.Content className="select-content">
+                  <Select.Content className="select-content" data-section="basics">
                     <Select.Viewport className="select-viewport">
                       <Select.Item className="select-item" value="gross">
                         <Select.ItemText>Gross Salary</Select.ItemText>

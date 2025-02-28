@@ -52,7 +52,7 @@ export const WorkerManager = () => {
   return (
     <>
 
-      <section className="workers-section">
+      <section className="workers-section" data-section="workers">
         <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
