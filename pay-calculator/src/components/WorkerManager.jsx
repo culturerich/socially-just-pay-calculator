@@ -6,13 +6,14 @@ import './WorkerRow.css';
 import './WorkerManager.css';
 
 export const WorkerManager = () => {
-  const { workers, setWorkers, uplifts } = usePayCalculator();
+  const { workers, setWorkers, uplifts, salary } = usePayCalculator();
 
   const handleAddWorker = () => {
     const newWorker = {
       id: crypto.randomUUID(),
       name: '',
       niCategory: 'A',
+      daysPerWeek: 0,
       selectedUplifts: []
     };
     setWorkers([...workers, newWorker]);
@@ -73,6 +74,7 @@ export const WorkerManager = () => {
                   key={worker.id}
                   worker={worker}
                   uplifts={uplifts}
+                  salary={salary}
                   onUpdate={handleUpdateWorker}
                   onDelete={handleDeleteWorker}
                 />

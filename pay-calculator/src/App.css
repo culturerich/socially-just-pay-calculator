@@ -41,7 +41,7 @@
 }
 
 /* Section-specific header styling with underlines */
-.section-intro.basic-details h2 {
+.section-intro h2 {
   border-bottom: 4px solid var(--color-basics-section);
   display: inline-block;
 }
@@ -59,6 +59,32 @@
 .section-intro.calculations h2 {
   border-bottom: 4px solid var(--color-calculation-section);
   display: inline-block;
+}
+
+.section-intro.notes h2 {
+  border-bottom: 4px solid var(--color-notes-section);
+  display: inline-block;
+}
+
+/* Section theming based on data-section attribute */
+[data-section="basics"] {
+  --color-section: var(--color-basics-section, var(--color-primary));
+}
+
+[data-section="uplifts"] {
+  --color-section: var(--color-uplift-section, var(--color-primary));
+}
+
+[data-section="workers"] {
+  --color-section: var(--color-worker-section, var(--color-primary));
+}
+
+[data-section="calculations"] {
+  --color-section: var(--color-calculation-section, var(--color-primary));
+}
+
+[data-section="notes"] {
+  --color-section: var(--color-notes-section, var(--color-primary));
 }
 
 .section-intro p {

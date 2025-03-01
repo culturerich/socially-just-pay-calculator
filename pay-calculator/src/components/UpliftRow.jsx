@@ -95,7 +95,7 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
           <Form.Control asChild>
             <input
               type="text"
-              className="form-input"
+              className="form-input uplift-name-input"
               value={uplift.title}
               onChange={handleTitleChange}
               placeholder="Enter name"

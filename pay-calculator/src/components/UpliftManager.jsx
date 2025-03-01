@@ -19,6 +19,7 @@ import './UpliftManager.css';
 export const UpliftManager = () => {
   const { uplifts, setUplifts } = usePayCalculator();
 
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {

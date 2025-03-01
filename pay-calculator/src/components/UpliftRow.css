@@ -3,7 +3,7 @@
 .uplift-row {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: var(--space-4);
+  gap: var(--space-3);
   align-items: center;
   padding: var(--space-3);
   border: 1px solid var(--color-border);
@@ -30,6 +30,7 @@
   flex-direction: column;
   gap: var(--space-2);
 }
+
 
 /* Responsive adjustments */
 

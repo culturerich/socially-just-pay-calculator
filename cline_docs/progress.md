@@ -1,7 +1,15 @@
 # Project Progress
 
 ## Current Status
-🟢 Core Implementation Phase
+🟢 Core Implementation Phase - WorkerRow Enhancements
+
+## Recent Changes
+- Changed the default value for daysPerWeek from 5 to 0 in both PayCalculatorContext.jsx and WorkerManager.jsx
+- Added visual cues for selected uplifts in WorkerRow component:
+  - Left border indicator for selected uplifts
+  - Bold text and accent color for selected uplift titles
+- Improved indentation display in WorkerRow uplift section
+- Completed all core component implementations
 
 ## What Works
 - ✅ Technical specification defined
@@ -26,32 +34,37 @@
 - ✅ Implement context structure
 - ✅ Install and configure Radix UI
 
-### Phase 2: Core Components ⏳
+### Phase 2: Core Components ✅
 - ✅ Create App root component
 - ✅ Implement BasicDetails section with two-column layout
   - ✅ Tax year and salary inputs in column 1
   - ✅ Pension details in column 2
   - ✅ Responsive design for mobile
-- ⏳ Build UpliftManager component
+- ✅ Build UpliftManager component
   - ✅ Basic structure and state management
   - ✅ Component files created
   - ✅ UI implementation with Radix components
   - ✅ Styling and responsive design
   - ✅ Drag and drop functionality
   - ✅ Full-width uplift rows
-  - ⏳ Uplift calculations (partially implemented in TotalCalculations)
-- ⏳ Develop WorkerManager component
+  - ✅ Uplift calculations
+- ✅ Develop WorkerManager component
   - ✅ Basic structure and state management
   - ✅ Component files created
   - ✅ UI implementation with Radix components
   - ✅ Drag and drop functionality
   - ✅ Default workers setup
   - ✅ Uplift checkbox integration
-  - ⏳ Worker calculations (partially implemented in TotalCalculations)
+  - ✅ Worker calculations
+  - ✅ Collapsible uplift sections
+  - ✅ Enhanced uplift controls (multiplier, extra percentage)
+  - ✅ Days-per-week input for pro-rata calculations
+  - ✅ Total uplift percentage calculation
+  - ✅ Gross salary calculation display
 - ✅ Create TotalCalculations component
   - ✅ Basic calculation logic
   - ✅ Worker calculations display
-  - ✅ Grand totals display
+  - ✅ Grand totals section
   - ✅ Empty state handling
 
 ### Phase 3: Services 🔲
@@ -72,6 +85,8 @@
   - ✅ Uniform button styles
   - ✅ Standardized drag handles
   - ✅ Consistent spacing and layout
+  - 🔲 Collapsible sections with proper styling
+  - 🔲 Notes section at the end of the application
 - ✅ Document CSS organization and patterns in styles/README.md
   - ✅ Document common CSS files and their purposes
   - ✅ Explain component-specific styling patterns
@@ -88,11 +103,12 @@
 - 🔲 Browser testing
 
 ## Next Steps
-1. Extract calculation logic to a dedicated service
-2. Implement data persistence with LocalStorage
-3. Add export functionality
-4. Improve form validation and error handling
-5. Add accessibility enhancements
+1. Create Notes component
+2. Extract calculation logic to a dedicated service
+3. Implement data persistence with LocalStorage
+4. Add export functionality
+5. Improve form validation and error handling
+6. Add accessibility enhancements
 
 ## Known Issues
 - Calculation logic is embedded in the TotalCalculations component instead of a dedicated service

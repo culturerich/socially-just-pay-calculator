@@ -65,8 +65,11 @@ export const TotalCalculations = () => {
                 {worker.uplifts.map((uplift, index) => (
                   <div key={index} className="calculation-row uplift-row">
                     <span>
-                      {uplift.title} ({uplift.percentage}%
-                      {uplift.isMultiplier ? ' multiplier' : ''})
+                      {uplift.title} ({uplift.percentage.toFixed(2)}%
+                      {uplift.isMultiplier ?
+                        ` (${uplift.basePercentage}% × ${uplift.multiplier}${uplift.extraPercentage > 0 ? ` + ${uplift.extraPercentage}%` : ''})`
+                        : ''}
+                      )
                     </span>
                     <span>{formatCurrency(uplift.amount)}</span>
                   </div>

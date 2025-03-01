@@ -29,6 +29,7 @@
   --color-uplift-section: #8b5cf6;    /* Purple */
   --color-worker-section: #ec4899;    /* Pink */
   --color-calculation-section: #10b981; /* Green */
+  --color-notes-section: #666;  /* Grey */
 
   --color-background: #f9fafb;
   --color-surface: #ffffff;
@@ -94,23 +95,6 @@
   --z-index-tooltip: 1600;
 }
 
-/* Section theming based on data-section attribute */
-[data-section="basics"] {
-  --color-section: var(--color-basics-section, var(--color-primary));
-}
-
-[data-section="uplifts"] {
-  --color-section: var(--color-uplift-section, var(--color-primary));
-}
-
-[data-section="workers"] {
-  --color-section: var(--color-worker-section, var(--color-primary));
-}
-
-[data-section="calculations"] {
-  --color-section: var(--color-calculation-section, var(--color-primary));
-}
-
 /* Dark Theme */
 :root[data-theme="dark"] {
   --color-primary: #6366f1;
@@ -134,6 +118,7 @@
   --color-uplift-section: #a78bfa;    /* Lighter Purple */
   --color-worker-section: #f472b6;    /* Lighter Pink */
   --color-calculation-section: #34d399; /* Lighter Green */
+  --color-calculation-section: #888888;  /* Lighter Grey */
 
   --color-background: #111827;
   --color-surface: #0f172a;

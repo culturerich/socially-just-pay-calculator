@@ -29,7 +29,11 @@ The system follows a component-based architecture using React with the following
    - WorkerManager: Handles worker-specific configurations
      * Default workers setup
      * NI category selection
-     * Uplift checkbox integration
+     * Collapsible uplift sections
+     * Enhanced uplift controls with multipliers and extra percentages
+     * Days-per-week input for pro-rata calculations
+     * Gross salary calculation display
+     * Total uplift percentage calculation
      * Drag and drop reordering
    - TotalCalculations: Aggregates all calculations
      * Clear section headings
@@ -49,7 +53,11 @@ The system follows a component-based architecture using React with the following
 
 ### Data Flow
 1. User inputs → React state
-2. State changes trigger calculations
+2. State changes trigger calculations:
+   - Base calculations (salary, uplifts)
+   - Worker-specific uplift modifications (multipliers, extra percentages)
+   - Pro-rata adjustments based on days-per-week
+   - Total uplift percentage aggregation
 3. Results update UI and persist to storage
 4. Export functionality transforms data for external use
 
@@ -60,11 +68,15 @@ The system follows a component-based architecture using React with the following
    - Handles complex ARIA attributes
    - Custom styled form controls
    - Responsive select components
+   - Collapsible sections with proper ARIA support
    - Consistent drag and drop functionality
 
 2. **Calculation Layer**
    - Dedicated PayCalculator service
    - Pure JavaScript for calculations
+   - Worker-specific uplift modifications
+   - Pro-rata calculation support
+   - Total uplift percentage aggregation
    - Memoization for complex operations
 
 3. **Data Persistence**

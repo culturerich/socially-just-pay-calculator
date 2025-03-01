@@ -2,68 +2,55 @@
 
 ## Current Focus
 
-Implementing improvements and fixes to the Pay Calculator application:
+Completing remaining enhancements to the Pay Calculator application:
 
-1. Reviewing the current implementation
-2. Identifying areas for improvement
-3. Planning implementation of missing features
+1. Adding a notes section to the application
+2. Extracting calculation logic to a dedicated service
+3. Implementing data persistence with LocalStorage
+4. Adding export functionality
 
 ## Recent Changes
 
-- Updated styles/README.md to document the current CSS organization:
-  - Documented the purpose and contents of each common CSS file
-  - Explained the two-tier structure of common and component-specific styles
-  - Provided guidelines for when to use common vs. component-specific styles
-  - Added examples of extending common styles with section-specific accent colors
-  - Documented section styling patterns and responsive design approach
-  - Included guidelines for future CSS development
-- Completed TotalCalculations implementation:
-  - Added calculation logic for worker salaries with uplifts
-  - Implemented employer NI contribution calculations
-  - Added pension contribution calculations
-  - Created responsive UI for displaying calculations
-  - Added grand totals section
-  - Implemented empty state handling
-- Completed WorkerManager and WorkerRow components:
-  - Implemented worker state management
-  - Added NI category selection with Radix Select
-  - Created uplift checkbox integration
-  - Added worker deletion with confirmation dialog
-  - Styled components for consistency
-- Improved styling across all components:
-  - Moved section headers outside boxes for better hierarchy
-  - Made uplift rows full-width for better space utilization
-  - Fixed worker row uplift checkboxes alignment
-  - Added consistent drag handle dots across uplifts and workers
-  - Added plus icon to Add Worker button to match Add Uplift
-  - Added two default workers in the context
+- Changed the default value for daysPerWeek from 5 to 0 in both PayCalculatorContext.jsx and WorkerManager.jsx
+- Added visual cues for selected uplifts in WorkerRow component:
+  - Left border indicator for selected uplifts
+  - Bold text and accent color for selected uplift titles
+- Improved indentation display in WorkerRow uplift section
+- Completed all core component implementations
+- Marked all uplift and worker calculations as complete
 
 ## Current Task
 
-Identifying improvements and fixes:
+Completing remaining enhancements:
 
-- Review calculation logic for accuracy
-- Identify missing features from the product requirements
-- Find opportunities for code refactoring and optimization
-- Plan implementation of data persistence
-- Evaluate accessibility improvements
+- Add a notes section at the end of the application
+- Extract calculation logic from components to a dedicated PayCalculator service
+- Implement form validation for the new input fields
 
 ## Next Steps
 
-1. Implement PayCalculator service to separate calculation logic from UI components
-2. Add StorageService for data persistence with LocalStorage
-3. Implement ExportService for CSV and Google Sheets export
-4. Add form validation and error handling
-5. Implement accessibility improvements
-6. Add unit tests for critical functionality
+1. Create the Notes component with the required information
+2. Extract calculation logic from components to a dedicated PayCalculator service
+3. Implement form validation for the new input fields
+4. Test all new functionality thoroughly
+5. After completing these enhancements:
+   - Add StorageService for data persistence with LocalStorage
+   - Implement ExportService for CSV and Google Sheets export
+   - Add unit tests for critical functionality
 
 ## Implementation Notes
 
-- Calculation logic should be moved from TotalCalculations to a dedicated service
-- LocalStorage integration needed for data persistence
-- Need to implement proper form validation across all inputs
-- Should add error handling for edge cases
-- Need to implement export functionality
+- The Notes component should include information about:
+  - Gross figure not including employer pension contributions
+  - Uplift rows being draggable into a two-level hierarchy
+- The PayCalculator service should:
+  - Centralize all calculation logic currently in components
+  - Handle worker calculations with uplifts, NI, and pension
+  - Support days-per-week pro-rata calculations
+  - Provide consistent currency formatting
+- Form validation should be added for:
+  - Numeric inputs (salary, percentages, multipliers)
+  - Required fields
 
 ## Questions to Address
 

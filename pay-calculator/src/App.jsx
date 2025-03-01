@@ -3,6 +3,7 @@ import { BasicDetails } from './components/BasicDetails';
 import { UpliftManager } from './components/UpliftManager';
 import { WorkerManager } from './components/WorkerManager';
 import { TotalCalculations } from './components/TotalCalculations';
+import { Notes } from './components/Notes';
 import { ThemeToggle } from './components/ThemeToggle';
 import './App.css';
 
@@ -39,6 +40,12 @@ function App() {
             <p>Based on the info above, here are total pay policy costs...</p>
           </section>
           <TotalCalculations />
+
+          <section className="section-intro notes">
+            <h2>Notes</h2>
+            <p>Important information about the calculator...</p>
+          </section>
+          <Notes />
         </main>
       </div>
     </PayCalculatorProvider>

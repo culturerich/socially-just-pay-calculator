@@ -35,10 +35,9 @@ button,
   background: var(--color-section, var(--color-primary));
   color: white;
   cursor: pointer;
-  font-weight: 500;
 }
 
-:is(button, .button):not(.select-trigger):is(:hover, :focus) {
+:is(button, .button):not(.select-trigger, .checkbox-root):is(:hover, :focus) {
   background: var(--color-section, var(--color-primary-hover));
 }
 
@@ -109,6 +108,11 @@ button.delete-button:focus {
   color: var(--color-text-secondary);
 }
 
+.worker-name-input,
+.uplift-name-input {
+  font-weight: 700;
+}
+
 /* Form control container */
 .form-control {
   display: flex;
@@ -142,12 +146,11 @@ button.delete-button:focus {
 
 .input-with-suffix .form-input {
   width: 100%;
-  padding-right: 24px; /* Make room for the suffix */
 }
 
 .input-suffix {
   position: absolute;
-  right: 10px;
+  right: 32px;
   color: var(--color-text-secondary);
   font-size: 0.875rem;
   pointer-events: none;
@@ -231,13 +234,14 @@ button.delete-button:focus {
   padding: 0;
 }
 
-.checkbox-root:is(:hover, :focus) {
+body .checkbox-root:is(:hover, :focus) {
   border: 1px solid transparent;
   outline: 2px solid var(--color-section, var(--color-primary));
+  background-color: transparent;
 }
 
 .checkbox-root[data-state="checked"] {
-  background-color: var(--color-section, var(--color-primary));
+  background-color: var(--color-section, var(--color-primary))!important;
   border: 1px solid transparent;
   outline: 2px solid var(--color-section, var(--color-primary));
 }
@@ -277,7 +281,7 @@ button.delete-button:focus {
 .drag-handle {
   display: flex;
   align-items: center;
-  padding: 12px 8px;
+  padding: 12px 4px;
   cursor: grab;
   align-self: center;
 }

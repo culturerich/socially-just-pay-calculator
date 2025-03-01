@@ -1,0 +1,30 @@
+/* Notes section */
+
+.notes-section {
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-8);
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.note-heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-emphasis);
+  margin: 0;
+}
+
+.note p {
+  margin: 0;
+  line-height: 1.5;
+}

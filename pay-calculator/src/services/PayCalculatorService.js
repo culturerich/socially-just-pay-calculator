@@ -58,29 +58,61 @@ export const calculateWorkerCosts = ({
     let workerSalary = baseSalary;
     let appliedUplifts = [];
 
-    // Sort uplifts by their order in the uplifts array to ensure consistent application
-    const sortedUplifts = worker.selectedUplifts
-      .map(id => uplifts.find(u => u.id === id))
+    // Process selected uplifts
+    const processedUplifts = worker.selectedUplifts
+      .map(upliftData => {
+        // Handle both string format (old) and object format (new)
+        const upliftId = typeof upliftData === 'string' ? upliftData : upliftData.id;
+        const uplift = uplifts.find(u => u.id === upliftId);
+
+        if (!uplift || !uplift.percentage || isNaN(parseFloat(uplift.percentage))) {
+          return null;
+        }
+
+        // Get multiplier and extra percentage (defaults if using old format)
+        const multiplier = typeof upliftData === 'string' ? 1 : (upliftData.multiplier || 1);
+        const extraPercentage = typeof upliftData === 'string' ? 0 : (upliftData.extraPercentage || 0);
+
+        return {
+          uplift,
+          multiplier,
+          extraPercentage,
+          order: uplifts.findIndex(u => u.id === upliftId)
+        };
+      })
       .filter(Boolean)
-      .sort((a, b) => {
-        return uplifts.findIndex(u => u.id === a.id) - uplifts.findIndex(u => u.id === b.id);
-      });
+      .sort((a, b) => a.order - b.order);
 
     // Apply each uplift
-    sortedUplifts.forEach(uplift => {
-      if (!uplift.percentage || isNaN(parseFloat(uplift.percentage))) return;
-
-      const percentage = parseFloat(uplift.percentage);
-      const upliftAmount = baseSalary * (percentage / 100);
+    processedUplifts.forEach(({ uplift, multiplier, extraPercentage }) => {
+      const basePercentage = parseFloat(uplift.percentage);
+      const totalPercentage = (basePercentage * multiplier) + extraPercentage;
+      const upliftAmount = baseSalary * (totalPercentage / 100);
 
       workerSalary += upliftAmount;
 
       appliedUplifts.push({
         title: uplift.title || 'Untitled uplift',
-        percentage,
-        amount: upliftAmount
+        percentage: totalPercentage,
+        basePercentage,
+        multiplier,
+        extraPercentage,
+        amount: upliftAmount,
+        isMultiplier: multiplier > 1 || extraPercentage > 0
       });
     });
+
+    // Apply days per week adjustment if present
+    if (worker.daysPerWeek && worker.daysPerWeek !== 5) {
+      const daysAdjustment = worker.daysPerWeek / 5;
+      workerSalary = workerSalary * daysAdjustment;
+
+      // Adjust uplift amounts for days per week
+      appliedUplifts = appliedUplifts.map(uplift => ({
+        ...uplift,
+        amount: uplift.amount * daysAdjustment
+      }));
+    }
 
     // Calculate employer NI contribution
     const employerNI = calculateEmployerNI({
