@@ -134,9 +134,9 @@
   gap: var(--space-4);
   align-items: center;
   padding: var(--space-4) var(--space-5);
-  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
   margin-top: var(--space-4);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   position: relative;
   transition: all 0.2s ease;
 }
@@ -144,11 +144,6 @@
 /* Indentation styles for worker uplift rows */
 .worker-uplift-row[data-indent-level="1"] {
   margin-left: 40px;
-}
-
-/* Selected uplift styles */
-.worker-uplift-row:has(.checkbox-root[data-state="checked"]) {
-  border-left: 3px solid var(--color-uplift-section, var(--color-primary));
 }
 
 /* Visual cue for selected uplifts */

@@ -9,7 +9,7 @@ import niCategoriesData from '../data/ni-categories.json';
 import taxYearsData from '../data/tax-years.json';
 
 /**
- * Formats a number as GBP currency
+ * Formats a number as GBP currency with 2 decimal places
  * @param {number} amount - The amount to format
  * @returns {string} Formatted currency string
  */
@@ -20,6 +20,86 @@ export const formatCurrency = (amount) => {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   }).format(amount);
+};
+
+/**
+ * Formats a number as GBP currency without decimal places
+ * @param {number} amount - The amount to format
+ * @returns {string} Formatted currency string without decimal places
+ */
+export const formatCurrencyNoDecimals = (amount) => {
+  return new Intl.NumberFormat('en-GB', {
+    style: 'currency',
+    currency: 'GBP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(amount);
+};
+
+/**
+ * Calculates the total uplift percentage for a worker
+ * @param {Array} selectedUplifts - Array of selected uplifts (either strings or objects with id, multiplier, extraPercentage)
+ * @param {Array} uplifts - Array of all available uplifts
+ * @returns {number} Total uplift percentage
+ */
+export const calculateTotalUpliftPercentage = (selectedUplifts, uplifts) => {
+  if (!selectedUplifts.length) return 0;
+
+  return selectedUplifts.reduce((total, upliftData) => {
+    // If it's just an ID (old format), find the uplift and use its percentage
+    if (typeof upliftData === 'string') {
+      const uplift = uplifts.find(u => u.id === upliftData);
+      if (uplift && uplift.percentage) {
+        return total + parseFloat(uplift.percentage);
+      }
+      return total;
+    }
+
+    // If it's an object with id, multiplier, and extraPercentage (new format)
+    const uplift = uplifts.find(u => u.id === upliftData.id);
+    if (uplift && uplift.percentage) {
+      const basePercentage = parseFloat(uplift.percentage);
+      const multiplier = upliftData.multiplier || 1;
+      const extraPercentage = upliftData.extraPercentage || 0;
+      return total + (basePercentage * multiplier) + extraPercentage;
+    }
+
+    return total;
+  }, 0);
+};
+
+/**
+ * Calculates the total uplift for a specific uplift
+ * @param {string} upliftId - ID of the uplift
+ * @param {Array} uplifts - Array of all available uplifts
+ * @param {Object} upliftData - Object containing multiplier and extraPercentage
+ * @returns {number} Total uplift percentage for the specific uplift
+ */
+export const calculateTotalUplift = (upliftId, uplifts, upliftData) => {
+  const uplift = uplifts.find(u => u.id === upliftId);
+  if (!uplift || !uplift.percentage) return 0;
+
+  const basePercentage = parseFloat(uplift.percentage);
+  const multiplier = upliftData.multiplier || 1;
+  const extraPercentage = upliftData.extraPercentage || 0;
+
+  return (basePercentage * multiplier) + extraPercentage;
+};
+
+/**
+ * Calculates the gross salary for a worker
+ * @param {number} baseSalary - Base salary
+ * @param {number} totalUpliftPercentage - Total uplift percentage
+ * @param {number} daysPerWeek - Number of days worked per week
+ * @returns {number} Gross salary
+ */
+export const calculateGrossSalary = (baseSalary, totalUpliftPercentage, daysPerWeek) => {
+  if (!baseSalary) return 0;
+
+  const upliftMultiplier = 1 + (totalUpliftPercentage / 100);
+  const daysAdjustment = daysPerWeek / 5;
+
+  return baseSalary * upliftMultiplier * daysAdjustment;
 };
 
 /**

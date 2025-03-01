@@ -97,6 +97,11 @@
 
 /* Dark Theme */
 :root[data-theme="dark"] {
+
+  body {
+    background-blend-mode: hard-light;
+  }
+
   --color-primary: #6366f1;
   --color-primary-light: #818cf8;
   --color-primary-dark: #4f46e5;
@@ -118,7 +123,7 @@
   --color-uplift-section: #a78bfa;    /* Lighter Purple */
   --color-worker-section: #f472b6;    /* Lighter Pink */
   --color-calculation-section: #34d399; /* Lighter Green */
-  --color-calculation-section: #888888;  /* Lighter Grey */
+  --color-notes-section: #888888;  /* Lighter Grey */
 
   --color-background: #111827;
   --color-surface: #0f172a;
@@ -136,47 +141,6 @@
   --color-info-icon-text: #ffffff;
 }
 
-/* System preference dark mode */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-primary: #6366f1;
-    --color-primary-light: #818cf8;
-    --color-primary-dark: #4f46e5;
-
-    --color-success: #34d399;
-    --color-success-light: #6ee7b7;
-    --color-success-dark: #10b981;
-
-    --color-error: #f87171;
-    --color-error-light: #fca5a5;
-    --color-error-dark: #ef4444;
-
-    --color-warning: #fbbf24;
-    --color-warning-light: #fcd34d;
-    --color-warning-dark: #f59e0b;
-
-    /* Section Accent Colors - Dark Theme */
-    --color-basic-accent: #60a5fa;     /* Lighter Blue */
-    --color-uplift-accent: #a78bfa;    /* Lighter Purple */
-    --color-worker-accent: #f472b6;    /* Lighter Pink */
-    --color-calculation-accent: #34d399; /* Lighter Green */
-
-    --color-background: #111827;
-    --color-surface: #0f172a;
-
-    --color-text: #f9fafb;
-    --color-text-secondary: #d1d5db;
-
-    --color-border: #374151;
-    --color-border-light: #4b5563;
-
-    --color-tooltip-bg: #6b7280;
-    --color-tooltip-text: #f9fafb;
-
-    --color-info-icon-bg: rgba(156, 163, 175, 0.5);
-    --color-info-icon-text: #ffffff;
-  }
-}
 
 /* Print Theme */
 @media print {

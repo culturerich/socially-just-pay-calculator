@@ -4,13 +4,28 @@
 
 Completing remaining enhancements to the Pay Calculator application:
 
-1. Adding a notes section to the application
-2. Extracting calculation logic to a dedicated service
-3. Implementing data persistence with LocalStorage
-4. Adding export functionality
+1. Extracting calculation logic to a dedicated service
+2. Implementing data persistence with LocalStorage
+3. Adding export functionality
+4. Improving form validation and error handling
 
 ## Recent Changes
 
+- Enhanced the TotalCalculations component:
+  - Incorporated individual worker calculation tables into the grand totals table with collapsible sections
+  - Replaced the "no calculations to display yet" message with a normal table showing 0 figures
+  - Made worker calculation details expandable/collapsible
+- Restructured the application layout:
+  - Created a two-column layout for desktop with main content on the left and totals on the right
+  - Made the totals section sticky for desktop so it remains visible while scrolling
+  - Ensured the Notes section appears last on both desktop and mobile layouts
+- Made the worker-uplifts-trigger closed by default for better UI organization
+- Extracted calculation logic from components to a dedicated PayCalculator service:
+  - Added formatCurrencyNoDecimals function
+  - Added calculateTotalUpliftPercentage function
+  - Added calculateGrossSalary function
+  - Added calculateTotalUplift function
+  - Updated WorkerRow component to use the service functions
 - Changed the default value for daysPerWeek from 5 to 0 in both PayCalculatorContext.jsx and WorkerManager.jsx
 - Added visual cues for selected uplifts in WorkerRow component:
   - Left border indicator for selected uplifts
@@ -18,20 +33,22 @@ Completing remaining enhancements to the Pay Calculator application:
 - Improved indentation display in WorkerRow uplift section
 - Completed all core component implementations
 - Marked all uplift and worker calculations as complete
+- Verified Notes component is fully implemented and working
+- Confirmed collapsible sections are properly styled and functional
 
 ## Current Task
 
 Completing remaining enhancements:
 
-- Add a notes section at the end of the application
-- Extract calculation logic from components to a dedicated PayCalculator service
+- ✅ Extract calculation logic from components to a dedicated PayCalculator service
 - Implement form validation for the new input fields
+- Add error handling for edge cases
 
 ## Next Steps
 
-1. Create the Notes component with the required information
-2. Extract calculation logic from components to a dedicated PayCalculator service
-3. Implement form validation for the new input fields
+1. ✅ Extract calculation logic from components to a dedicated PayCalculator service
+2. Implement form validation for the new input fields
+3. Add error handling for edge cases
 4. Test all new functionality thoroughly
 5. After completing these enhancements:
    - Add StorageService for data persistence with LocalStorage
@@ -40,9 +57,6 @@ Completing remaining enhancements:
 
 ## Implementation Notes
 
-- The Notes component should include information about:
-  - Gross figure not including employer pension contributions
-  - Uplift rows being draggable into a two-level hierarchy
 - The PayCalculator service should:
   - Centralize all calculation logic currently in components
   - Handle worker calculations with uplifts, NI, and pension
@@ -51,6 +65,10 @@ Completing remaining enhancements:
 - Form validation should be added for:
   - Numeric inputs (salary, percentages, multipliers)
   - Required fields
+- Error handling should address:
+  - Invalid input values
+  - Edge cases in calculations
+  - Graceful fallbacks for unexpected scenarios
 
 ## Questions to Address
 

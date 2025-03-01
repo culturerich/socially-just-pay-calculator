@@ -11,17 +11,12 @@ import { Tooltip } from './Tooltip';
 import { InfoIcon } from './icons/InfoIcon';
 import { tooltipContent } from '../data/tooltip-content';
 import niCategories from '../data/ni-categories.json';
-import { formatCurrency } from '../services/PayCalculatorService';
-
-// Format currency without decimal places
-const formatCurrencyNoDecimals = (amount) => {
-  return new Intl.NumberFormat('en-GB', {
-    style: 'currency',
-    currency: 'GBP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(amount);
-};
+import {
+  formatCurrencyNoDecimals,
+  calculateTotalUpliftPercentage,
+  calculateGrossSalary,
+  calculateTotalUplift
+} from '../services/PayCalculatorService';
 
 export const WorkerRow = ({ worker, uplifts, salary, onUpdate, onDelete }) => {
   const {
@@ -37,44 +32,17 @@ export const WorkerRow = ({ worker, uplifts, salary, onUpdate, onDelete }) => {
     transition
   };
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [isUpliftOpen, setIsUpliftOpen] = useState(true);
+  const [isUpliftOpen, setIsUpliftOpen] = useState(false);
 
-  // Calculate total uplift percentage
+  // Calculate total uplift percentage using the service
   const totalUpliftPercentage = useMemo(() => {
-    if (!worker.selectedUplifts.length) return 0;
-
-    return worker.selectedUplifts.reduce((total, upliftData) => {
-      // If it's just an ID (old format), find the uplift and use its percentage
-      if (typeof upliftData === 'string') {
-        const uplift = uplifts.find(u => u.id === upliftData);
-        if (uplift && uplift.percentage) {
-          return total + parseFloat(uplift.percentage);
-        }
-        return total;
-      }
-
-      // If it's an object with id, multiplier, and extraPercentage (new format)
-      const uplift = uplifts.find(u => u.id === upliftData.id);
-      if (uplift && uplift.percentage) {
-        const basePercentage = parseFloat(uplift.percentage);
-        const multiplier = upliftData.multiplier || 1;
-        const extraPercentage = upliftData.extraPercentage || 0;
-        return total + (basePercentage * multiplier) + extraPercentage;
-      }
-
-      return total;
-    }, 0);
+    return calculateTotalUpliftPercentage(worker.selectedUplifts, uplifts);
   }, [worker.selectedUplifts, uplifts]);
 
-  // Calculate gross salary
+  // Calculate gross salary using the service
   const grossSalary = useMemo(() => {
     if (!salary) return 0;
-
-    const baseSalary = parseFloat(salary);
-    const upliftMultiplier = 1 + (totalUpliftPercentage / 100);
-    const daysAdjustment = worker.daysPerWeek / 5;
-
-    return baseSalary * upliftMultiplier * daysAdjustment;
+    return calculateGrossSalary(parseFloat(salary), totalUpliftPercentage, worker.daysPerWeek);
   }, [salary, totalUpliftPercentage, worker.daysPerWeek]);
 
   const handleNameChange = (e) => {
@@ -208,15 +176,10 @@ export const WorkerRow = ({ worker, uplifts, salary, onUpdate, onDelete }) => {
     };
   };
 
-  // Calculate total uplift for a specific uplift
-  const calculateTotalUplift = (upliftId) => {
-    const uplift = uplifts.find(u => u.id === upliftId);
-    if (!uplift || !uplift.percentage) return 0;
-
-    const basePercentage = parseFloat(uplift.percentage);
+  // Calculate total uplift for a specific uplift using the service
+  const getTotalUplift = (upliftId) => {
     const { multiplier, extraPercentage } = getUpliftData(upliftId);
-
-    return (basePercentage * multiplier) + extraPercentage;
+    return calculateTotalUplift(upliftId, uplifts, { multiplier, extraPercentage });
   };
 
   // Delete button with dialog if needed
@@ -404,7 +367,7 @@ export const WorkerRow = ({ worker, uplifts, salary, onUpdate, onDelete }) => {
 
               const isChecked = isUpliftSelected(uplift.id);
               const { multiplier, extraPercentage } = getUpliftData(uplift.id);
-              const totalUplift = calculateTotalUplift(uplift.id);
+              const totalUplift = getTotalUplift(uplift.id);
 
               return (
                 <div
