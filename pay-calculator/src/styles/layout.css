@@ -5,6 +5,16 @@
  */
 
 /* Section styling */
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  background-image: url(https://radhr.org/wp-content/uploads/noisy.png);
+  background-attachment: fixed;
+  line-height: 1.5;
+}
+
 section {
   padding: var(--space-6);
   background-color: var(--color-surface);
