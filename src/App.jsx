@@ -19,8 +19,8 @@ function App() {
         <main className="app-layout">
           <div className="main-column">
             <section className="section-intro basic-details">
-              <h2>Basic Details</h2>
-              <p>Enter the core salary information and pension details to begin...</p>
+              <h2>Basics</h2>
+              <p>Enter the core salary and pension details to begin...</p>
             </section>
             <BasicDetails />
 
