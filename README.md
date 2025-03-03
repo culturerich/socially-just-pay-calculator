@@ -1,10 +1,18 @@
 # Pay Calculator
 
+> ⚠️ **DEVELOPMENT NOTICE**: This calculator is currently in development. The total figures have not yet been tested and verified, they may be completely wrong!
+
 A web tool for calculating the costs of a socially-just (or needs-based) pay policy in a UK context.
 
 It simplifies complex salary calculations, including base salary, uplifts, pension contributions, and employer National Insurance costs.
 
 ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Deployed-brightgreen)
+
+## Launch Calculator
+
+<a href="https://culturerich.github.io/socially-just-pay-calculator/" target="_blank">
+  <img src="public/vite.svg" width="20" alt="Calculator Icon"> <strong>Launch Calculator in New Window</strong>
+</a>
 
 ## Features
 
