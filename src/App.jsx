@@ -5,7 +5,11 @@ import { WorkerManager } from './components/WorkerManager';
 import { TotalCalculations } from './components/TotalCalculations';
 import { Notes } from './components/Notes';
 import { ThemeToggle } from './components/ThemeToggle';
+import noisyBackground from './assets/noisy.png'
 import './App.css';
+
+// Set CSS variable for the background
+document.documentElement.style.setProperty('--noisy-background', `url(${noisyBackground})`);
 
 function App() {
   return (
