@@ -10,9 +10,12 @@ It simplifies complex salary calculations, including base salary, uplifts, pensi
 
 ## Launch Calculator
 
-<a href="https://culturerich.github.io/socially-just-pay-calculator/" target="_blank">
-  <img src="public/vite.svg" width="20" alt="Calculator Icon"> <strong>Launch Calculator in New Window</strong>
-</a>
+<p>
+   <img src="public/vite.svg" width="20" alt="Calculator Icon">
+   <a href="https://culturerich.github.io/socially-just-pay-calculator/" target="_blank">
+      <strong>Launch Calculator</strong>
+   </a>
+</p>
 
 ## Features
 
