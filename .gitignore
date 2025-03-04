@@ -4,6 +4,7 @@ build/
 
 cline_docs/
 pay-calculator-spec.md
+dev_output.txt
 
 # Logs
 logs

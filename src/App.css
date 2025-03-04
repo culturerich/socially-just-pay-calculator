@@ -10,6 +10,7 @@
   color: var(--color-text);
   font-size: 2.25rem;
   font-weight: 900;
+  line-height: 1.2;
 }
 
 .app-intro {
@@ -48,11 +49,11 @@ section {
 }
 
 .section-intro p {
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   margin-bottom: var(--space-4);
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 /* Section-specific header styling with underlines */
@@ -100,76 +101,4 @@ section {
 
 [data-section="notes"] {
   --color-section: var(--color-notes-section, var(--color-primary));
-}
-
-/* App layout */
-.app-layout {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-/* Two-column layout for desktop */
-@media (min-width: 1024px) {
-  .app-layout {
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    grid-template-areas:
-      "main totals"
-      "notes totals";
-    gap: 0 var(--space-8);
-    align-items: start;
-  }
-
-  .main-column {
-    grid-area: main;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .totals-column {
-    grid-area: totals;
-    position: sticky;
-    top: var(--space-8);
-    align-self: start;
-  }
-
-  .notes-column {
-    grid-area: notes;
-  }
-}
-
-/* Single column layout for mobile and tablets */
-@media (max-width: 1023px) {
-  .app-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  .main-column,
-  .totals-column,
-  .notes-column {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-6);
-  }
-
-  /* Order for mobile */
-  .app-layout {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .main-column {
-    order: 1;
-  }
-
-  .totals-column {
-    order: 2;
-  }
-
-  .notes-column {
-    order: 3;
-  }
 }

@@ -362,81 +362,86 @@ export const WorkerRow = ({ worker, uplifts, salary, onUpdate, onDelete }) => {
           </Collapsible.Trigger>
 
           <Collapsible.Content className="worker-uplifts-content">
-            {uplifts.map(uplift => {
-              if (!uplift.title || !uplift.percentage) return null;
+            {/* Check if there are any valid uplifts to display */}
+            {uplifts.filter(uplift => uplift.title && uplift.percentage).length === 0 ? (
+              <div className="no-uplifts-message">No uplifts added yet.</div>
+            ) : (
+              uplifts.map(uplift => {
+                if (!uplift.title || !uplift.percentage) return null;
 
-              const isChecked = isUpliftSelected(uplift.id);
-              const { multiplier, extraPercentage } = getUpliftData(uplift.id);
-              const totalUplift = getTotalUplift(uplift.id);
+                const isChecked = isUpliftSelected(uplift.id);
+                const { multiplier, extraPercentage } = getUpliftData(uplift.id);
+                const totalUplift = getTotalUplift(uplift.id);
 
-              return (
-                <div
-                  key={uplift.id}
-                  className="worker-uplift-row"
-                  data-indent-level={uplift.indentLevel || 0}
-                >
-                  <div className="worker-uplift-checkbox">
-                    <Checkbox.Root
-                      className="checkbox-root"
-                      checked={isChecked}
-                      onCheckedChange={() => handleUpliftToggle(uplift.id)}
-                      id={`worker-${worker.id}-uplift-${uplift.id}`}
-                      aria-label={`Apply ${uplift.title} to ${worker.name || 'this worker'}`}
-                    >
-                      <Checkbox.Indicator className="checkbox-indicator">
-                        <CheckIcon />
-                      </Checkbox.Indicator>
-                    </Checkbox.Root>
-                    <label className="checkbox-label" htmlFor={`worker-${worker.id}-uplift-${uplift.id}`}>
-                      {uplift.title}
-                    </label>
-                  </div>
+                return (
+                  <div
+                    key={uplift.id}
+                    className="worker-uplift-row"
+                    data-indent-level={uplift.indentLevel || 0}
+                  >
+                    <div className="worker-uplift-checkbox">
+                      <Checkbox.Root
+                        className="checkbox-root"
+                        checked={isChecked}
+                        onCheckedChange={() => handleUpliftToggle(uplift.id)}
+                        id={`worker-${worker.id}-uplift-${uplift.id}`}
+                        aria-label={`Apply ${uplift.title} to ${worker.name || 'this worker'}`}
+                      >
+                        <Checkbox.Indicator className="checkbox-indicator">
+                          <CheckIcon />
+                        </Checkbox.Indicator>
+                      </Checkbox.Root>
+                      <label className="checkbox-label" htmlFor={`worker-${worker.id}-uplift-${uplift.id}`}>
+                        {uplift.title}
+                      </label>
+                    </div>
 
-                  {/* Always show the controls, regardless of isChecked */}
-                  <div className="worker-uplift-multiplier" style={{ display: isChecked ? 'flex' : 'none' }}>
-                    <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}-multiplier`} className="form-label">
-                      Multiplier
-                    </label>
-                    <div className="input-with-suffix">
-                      <input
-                        id={`worker-${worker.id}-uplift-${uplift.id}-multiplier`}
-                        type="number"
-                        min="1"
-                        step="1"
-                        value={multiplier}
-                        onChange={(e) => handleUpliftMultiplierChange(uplift.id, e.target.value)}
-                        className="multiplier-input"
-                        aria-label={`Multiplier for ${uplift.title}`}
-                      />
-                    <span className="input-suffix">×</span>
+                    {/* Always show the controls, regardless of isChecked */}
+                    <div className="worker-uplift-multiplier" style={{ display: isChecked ? 'flex' : 'none' }}>
+                      <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}-multiplier`} className="form-label">
+                        Multiplier
+                      </label>
+                      <div className="input-with-suffix">
+                        <input
+                          id={`worker-${worker.id}-uplift-${uplift.id}-multiplier`}
+                          type="number"
+                          min="1"
+                          step="1"
+                          value={multiplier}
+                          onChange={(e) => handleUpliftMultiplierChange(uplift.id, e.target.value)}
+                          className="multiplier-input"
+                          aria-label={`Multiplier for ${uplift.title}`}
+                        />
+                        <span className="input-suffix">×</span>
+                      </div>
+                    </div>
+
+                    <div className="worker-uplift-extra" style={{ display: isChecked ? 'flex' : 'none' }}>
+                      <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}-extra`} className="form-label">
+                        Additional
+                      </label>
+                      <div className="input-with-suffix">
+                        <input
+                          id={`worker-${worker.id}-uplift-${uplift.id}-extra`}
+                          type="number"
+                          step="0.5"
+                          value={extraPercentage}
+                          onChange={(e) => handleUpliftExtraPercentageChange(uplift.id, e.target.value)}
+                          className="extra-input"
+                          aria-label={`Extra percentage for ${uplift.title}`}
+                        />
+                        <span className="input-suffix">%</span>
+                      </div>
+                    </div>
+
+                    <div className="worker-uplift-total" style={{ display: isChecked ? 'flex' : 'none' }}>
+                      <span className="form-label">Uplift Total</span>
+                      <span className="total-value">{totalUplift.toFixed(1)}%</span>
                     </div>
                   </div>
-
-                  <div className="worker-uplift-extra" style={{ display: isChecked ? 'flex' : 'none' }}>
-                    <label htmlFor={`worker-${worker.id}-uplift-${uplift.id}-extra`} className="form-label">
-                      Additional
-                    </label>
-                    <div className="input-with-suffix">
-                      <input
-                        id={`worker-${worker.id}-uplift-${uplift.id}-extra`}
-                        type="number"
-                        step="0.5"
-                        value={extraPercentage}
-                        onChange={(e) => handleUpliftExtraPercentageChange(uplift.id, e.target.value)}
-                        className="extra-input"
-                        aria-label={`Extra percentage for ${uplift.title}`}
-                      />
-                      <span className="input-suffix">%</span>
-                    </div>
-                  </div>
-
-                  <div className="worker-uplift-total" style={{ display: isChecked ? 'flex' : 'none' }}>
-                    <span className="form-label">Uplift Total</span>
-                    <span className="total-value">{totalUplift.toFixed(1)}%</span>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })
+            )}
           </Collapsible.Content>
         </Collapsible.Root>
       </div>

@@ -6,6 +6,7 @@
  */
 
 /* Base mobile adjustments */
+
 @media (max-width: 768px) {
   /* Increase touch targets */
   button,

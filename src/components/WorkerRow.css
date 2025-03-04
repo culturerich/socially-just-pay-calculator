@@ -83,8 +83,10 @@
   gap: var(--space-2);
 }
 
-.gross-salary-container .form-label {
-  text-align: right;
+@media (min-width: 1024px) {
+  .gross-salary-container .form-label {
+    text-align: right;
+  }
 }
 
 .gross-salary-value {
@@ -100,17 +102,18 @@
   justify-content: flex-start;
   align-items: center;
   padding: var(--space-3);
-  background-color: var(--color-background);
+  background-color: var(--color-surface);
   cursor: pointer;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   font-size: 0.875rem;
   text-align: left;
   gap: var(--space-1);
 }
 
 .worker-uplifts-trigger:is(:hover, :focus) {
-  background-color: var(--color-border)!important;
-  outline-color: transparent;
+  background-color: var(--color-surface)!important;
+  border-color: transparent;
+  outline-color: var(--color-uplift-section);
 }
 
 .worker-uplifts-trigger svg{
@@ -127,17 +130,31 @@
   animation: slideDown 0.2s ease;
 }
 
+/* No uplifts message */
+.no-uplifts-message {
+  padding: var(--space-3);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.875rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-3);
+  border: 1px solid var(--color-border);
+}
+
 /* Uplift rows in collapsible section */
 .worker-uplift-row {
   display: grid;
   grid-template-columns: 1fr auto auto auto;
   gap: var(--space-4);
   align-items: center;
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-3) var(--space-4);
   border: 1px solid var(--color-border);
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   border-radius: var(--radius-lg);
   position: relative;
+  background: var(--color-surface);
   transition: all 0.2s ease;
 }
 
@@ -239,7 +256,6 @@
 
   /* Add padding to the worker-row to account for the absolute positioned controls */
   .worker-row {
-    padding-top: calc(var(--space-4) + 24px);
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, auto);
     gap: var(--space-3);
@@ -266,4 +282,3 @@
     align-items: center;
     gap: var(--space-2);
   }
-}

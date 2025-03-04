@@ -113,7 +113,6 @@ export const UpliftRow = ({ uplift, onUpdate, onRemove, id }) => {
                 className={`form-input ${percentageError ? 'input-error' : ''}`}
                 value={uplift.percentage}
                 onChange={handlePercentageChange}
-                placeholder="e.g. 3%"
                 min="0"
                 max="1000"
                 step="0.5"

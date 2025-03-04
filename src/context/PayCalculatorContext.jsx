@@ -25,14 +25,14 @@ export const PayCalculatorProvider = ({ children }) => {
       id: crypto.randomUUID(),
       name: '',
       niCategory: 'A',
-      daysPerWeek: 0,
+      daysPerWeek: 4,
       selectedUplifts: []
     },
     {
       id: crypto.randomUUID(),
       name: '',
       niCategory: 'A',
-      daysPerWeek: 0,
+      daysPerWeek: 4,
       selectedUplifts: []
     }
   ]);

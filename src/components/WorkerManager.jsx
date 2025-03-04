@@ -13,7 +13,7 @@ export const WorkerManager = () => {
       id: crypto.randomUUID(),
       name: '',
       niCategory: 'A',
-      daysPerWeek: 0,
+      daysPerWeek: 4,
       selectedUplifts: []
     };
     setWorkers([...workers, newWorker]);
