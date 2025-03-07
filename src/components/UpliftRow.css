@@ -6,20 +6,20 @@
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-3);
-  border: 1px solid var(--color-border);
-  border-radius: 0.5rem;
+  border: var(--border-width-sm) solid var(--color-border);
+  border-radius: var(--radius-lg);
   background-color: var(--color-background);
 }
 
 /* Indentation styles */
 .uplift-row[data-indent-level="1"] {
-  margin-left: 40px;
+  margin-left: var(--space-10);
   position: relative;
 }
 
 .uplift-row form {
   display: grid;
-  grid-template-columns: 2fr 120px;
+  grid-template-columns: 2fr var(--width-input-lg);
   gap: var(--space-4);
   width: 100%;
 }

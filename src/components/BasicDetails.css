@@ -21,8 +21,8 @@
 
 /* Currency select */
 .form-control .select-trigger.currency-select {
-  width: 80px;
-  min-width: 80px;
+  width: var(--width-input-sm);
+  min-width: var(--width-input-sm);
   flex-shrink: 0;
-  font-size: 0.875rem;
+  font-size: var(--font-size-sm);
 }

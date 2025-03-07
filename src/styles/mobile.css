@@ -31,13 +31,12 @@
   /* Ensure inputs are large enough to tap */
   .form-input {
     height: 44px;
-    font-size: 16px; /* Prevent iOS zoom on focus */
+
   }
 
   /* Adjust select elements */
   .select-trigger {
     height: 44px;
-    font-size: 16px;
   }
 
   /* Ensure tooltips are positioned correctly on mobile */
@@ -146,16 +145,6 @@
   /* Further reduce padding */
   section {
     padding: var(--space-3);
-  }
-
-  /* Adjust app title */
-  .app h1 {
-    font-size: 1.5rem;
-  }
-
-  /* Adjust section headers */
-  .section-intro h2 {
-    font-size: 1.25rem;
   }
 
   /* Stack calculation rows on very small screens */
