@@ -25,10 +25,10 @@
   --color-warning-dark: #d97706;
 
   /* Section Accent Colors */
-  --color-basics-section: #3b82f6;     /* Blue */
-  --color-uplift-section: #8b5cf6;    /* Purple */
+  --color-basics-section: #8b5cf6;     /* Blue */
+  --color-uplift-section: #10b981;    /* Purple */
   --color-worker-section: #ec4899;    /* Pink */
-  --color-calculation-section: #10b981; /* Green */
+  --color-calculation-section: #3b82f6; /* Green */
   --color-notes-section: #666;  /* Grey */
 
   --color-background: #f9fafb;
@@ -142,10 +142,10 @@
   --color-warning-dark: #f59e0b;
 
   /* Section Accent Colors - Dark Theme */
-  --color-basics-section: #60a5fa;     /* Lighter Blue */
-  --color-uplift-section: #a78bfa;    /* Lighter Purple */
+  --color-basics-section: #a78bfa;     /* Lighter Blue */
+  --color-uplift-section: #34d399;    /* Lighter Purple */
   --color-worker-section: #f472b6;    /* Lighter Pink */
-  --color-calculation-section: #34d399; /* Lighter Green */
+  --color-calculation-section: #60a5fa; /* Lighter Green */
   --color-notes-section: #888888;  /* Lighter Grey */
 
   --color-background: #111827;
